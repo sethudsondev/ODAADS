@@ -1293,43 +1293,18 @@ app.<span class="fn">listen</span>(<span class="nm">3000</span>);</pre></div>
       </button>
     </div>
 
-    <!-- TELA 2: Certificado gerado -->
-    <div id="cert-generated-screen" style="display:none;">
-      <div class="cert-seal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="gold" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H3.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h2.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg></div>
-      <div class="cert-title" data-i18n="cert_doc_title">Certificado de Conclusão</div>
-      <div class="cert-heading" data-i18n="cert_congrats">Parabéns!</div>
-      <div class="cert-heading" style="font-size:1rem;color:var(--muted);font-weight:400;margin-bottom:1rem;" data-i18n="cert_excellence">você concluiu o ODA com excelência</div>
-      <div class="cert-issued-to" data-i18n="cert_certify">Certificamos que</div>
-      <div class="cert-name" id="cert-name-display">-</div>
-      <div class="cert-body">
-        <span data-i18n="cert_body1">demonstrou domínio dos conteúdos do</span>
-        <strong data-i18n="hero_tag_full">Objeto de Aprendizagem Digital · Análise e Desenvolvimento de Sistemas</strong><span data-i18n="cert_body2">, abrangendo Engenharia de Software, Banco de Dados, Programação Web, Redes de Computadores, Algoritmos e Segurança da Informação.</span>
-      </div>
-      <div class="cert-score-box">
-        <div>
-          <div class="cert-score-label" data-i18n="cert_score_label">Nota obtida no Quiz</div>
-          <div class="cert-score-value" id="cert-score-display">- / -</div>
-        </div>
-      </div>
-      <div style="margin:0.75rem auto;max-width:400px;background:rgba(116,0,236,0.08);border:1px solid rgba(116,0,236,0.25);border-radius:8px;padding:0.5rem 1rem;font-family:monospace;font-size:0.65rem;color:#b088ff;letter-spacing:0.05em;">
-        <span data-i18n="cert_validation">Código de Validação:</span> <span id="cert-code-display" style="font-weight:700;color:#7400ec;">-</span>
-      </div>
-      <hr class="cert-divider">
-      <div class="cert-meta">
-        <span data-i18n="cert_institution">Instituição:</span> <span>Centro Universitário UNIGRANDE</span><br>
-        <span data-i18n="cert_course">Curso:</span> <span>Análise e Desenvolvimento de Sistemas, 4º Semestre</span><br>
-        <span data-i18n="cert_group">Grupo:</span> <span>Grupo A, Projeto de Extensão</span><br>
-        <span data-i18n="cert_date">Data:</span> <span id="cert-date"></span>
-      </div>
-      <div class="cert-actions">
+    <!-- TELA 2: Certificado gerado (imagem desenhada em canvas, mesmo modelo do Pessoas em Braile) -->
+    <div id="cert-generated-screen" style="display:none;padding:1.25rem;">
+      <canvas id="cert-canvas" style="width:100%;border-radius:12px;display:block;"></canvas>
+      <div class="cert-actions" style="margin-top:1rem;">
         <button class="btn btn-ghost" onclick="closeCert()" data-i18n="cert_close">Fechar</button>
         <button class="btn btn-outline" onclick="copiarCodigo()" style="font-size:0.78rem;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           <span data-i18n="cert_copy">Copiar código</span>
         </button>
-        <button class="btn btn-primary" onclick="window.print()">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-          <span data-i18n="cert_print">Imprimir / PDF</span>
+        <button class="btn btn-primary" onclick="downloadCert()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><path d="M12 2v13M8 11l4 4 4-4"/><path d="M20 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2"/></svg>
+          <span data-i18n="cert_download">Baixar Certificado</span>
         </button>
       </div>
     </div>

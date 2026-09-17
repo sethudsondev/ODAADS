@@ -421,7 +421,8 @@ const ODA_UI = {
     cert_score_label: "Quiz score",
     cert_validation: "Validation Code:",
     cert_institution: "Institution:", cert_course: "Course:", cert_group: "Group:", cert_date: "Date:",
-    cert_close: "Close", cert_copy: "Copy code", cert_print: "Print / PDF",
+    cert_status_dist: "PASSED WITH DISTINCTION", cert_status_ok: "PASSED", cert_status_part: "PARTICIPATION",
+    cert_close: "Close", cert_copy: "Copy code", cert_download: "Download Certificate",
 
     footer_text: "Digital Learning Object · Systems Analysis and Development · Free for educational use",
     footer_meta: "UNIGRANDE University Center · ADS Course · 4th Semester · 2026",
@@ -501,7 +502,8 @@ const ODA_UI = {
     cert_score_label: "Nota obtenida en el Quiz",
     cert_validation: "Código de Validación:",
     cert_institution: "Institución:", cert_course: "Curso:", cert_group: "Grupo:", cert_date: "Fecha:",
-    cert_close: "Cerrar", cert_copy: "Copiar código", cert_print: "Imprimir / PDF",
+    cert_status_dist: "APROBADO CON DISTINCIÓN", cert_status_ok: "APROBADO", cert_status_part: "PARTICIPACIÓN",
+    cert_close: "Cerrar", cert_copy: "Copiar código", cert_download: "Descargar Certificado",
 
     footer_text: "Objeto Digital de Aprendizaje · Análisis y Desarrollo de Sistemas · Uso educativo gratuito",
     footer_meta: "Centro Universitario UNIGRANDE · Curso de ADS · 4º Semestre · 2026",

@@ -755,6 +755,26 @@ function showCert(s) {
   if (ov) { ov.classList.add('open'); document.body.style.overflow = 'hidden'; }
 }
 
+var CERT_LOGO = 'logo.jpg';
+var _certCode = '';
+
+// Helpers de desenho no canvas (mesmo padrao usado no certificado do
+// Pessoas em Braile, so trocando o conteudo pro ODA-ADS).
+function certRoundRect(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.arcTo(x+w,y,x+w,y+r,r);ctx.lineTo(x+w,y+h-r);ctx.arcTo(x+w,y+h,x+w-r,y+h,r);ctx.lineTo(x+r,y+h);ctx.arcTo(x,y+h,x,y+h-r,r);ctx.lineTo(x,y+r);ctx.arcTo(x,y,x+r,y,r);ctx.closePath();}
+function certRoundRectTop(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.arcTo(x+w,y,x+w,y+r,r);ctx.lineTo(x+w,y+h);ctx.lineTo(x,y+h);ctx.lineTo(x,y+r);ctx.arcTo(x,y,x+r,y,r);ctx.closePath();}
+function certDrawSpaced(ctx,text,x,y,sp){const total=text.split('').reduce((a,c)=>a+ctx.measureText(c).width+sp,0)-sp;let cx=x-total/2;for(const ch of text){ctx.fillText(ch,cx,y);cx+=ctx.measureText(ch).width+sp;}}
+function certWrapLines(ctx,text,maxWidth){
+  var words = text.split(' ');
+  var lines = []; var cur = '';
+  for (var i = 0; i < words.length; i++) {
+    var test = cur ? cur + ' ' + words[i] : words[i];
+    if (ctx.measureText(test).width > maxWidth && cur) { lines.push(cur); cur = words[i]; }
+    else cur = test;
+  }
+  if (cur) lines.push(cur);
+  return lines;
+}
+
 function generateCert() {
   var nome = (document.getElementById('cert-name-input') || {}).value || '';
   nome = nome.trim();
@@ -766,30 +786,19 @@ function generateCert() {
   }
   var s = window._certScore || 0;
   var total = (typeof questions !== 'undefined') ? questions.length : 10;
+  var _certLang = odaLang();
 
   // Data
   var d = new Date();
-  var _certLang = odaLang();
   var months = (_certLang !== 'pt' && typeof ODA_MONTHS !== 'undefined') ? ODA_MONTHS[_certLang] :
     ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
   var dateStr = _certLang === 'en'
     ? (months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear())
-    : _certLang === 'es'
-    ? (d.getDate() + ' de ' + months[d.getMonth()] + ' de ' + d.getFullYear())
     : (d.getDate() + ' de ' + months[d.getMonth()] + ' de ' + d.getFullYear());
 
   // Código único
   var code = 'ODA-ADS-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substring(2,6).toUpperCase();
-
-  // Preencher campos
-  var nameEl = document.getElementById('cert-name-display');
-  var dateEl = document.getElementById('cert-date');
-  var scoreEl = document.getElementById('cert-score-display');
-  var codeEl = document.getElementById('cert-code-display');
-  if (nameEl) nameEl.textContent = nome;
-  if (dateEl) dateEl.textContent = dateStr;
-  if (scoreEl) scoreEl.textContent = s + ' / ' + total;
-  if (codeEl) codeEl.textContent = code;
+  _certCode = code;
 
   // Salvar localStorage
   try { localStorage.setItem('oda-cert', JSON.stringify({nome, code, date: dateStr, score: s})); } catch(e) {}
@@ -800,14 +809,146 @@ function generateCert() {
   if (inputScreen) inputScreen.style.display = 'none';
   if (genScreen) genScreen.style.display = 'block';
 
+  drawCertCanvas(nome, _certLang, s, total, dateStr, code);
+
   if (typeof showToast === 'function') showToast('🎉 Certificado gerado, ' + nome + '!', 3500);
 }
+
+function drawCertCanvas(nome, lang, score, total, dateStr, code) {
+  var ui = (lang !== 'pt' && typeof ODA_UI !== 'undefined') ? ODA_UI[lang] : null;
+  function t(key, ptFallback) { return (ui && ui[key]) ? ui[key] : ptFallback; }
+
+  var certifyTxt = t('cert_certify', 'Certificamos que');
+  var subtitleTxt = lang === 'en' ? 'Digital Learning Object · ADS' : lang === 'es' ? 'Objeto de Aprendizaje Digital · ADS' : 'Objeto de Aprendizagem Digital · ADS';
+  var descTxt = t('cert_body1', 'demonstrou domínio dos conteúdos do') + ' ' + t('hero_tag_full', 'Objeto de Aprendizagem Digital · Análise e Desenvolvimento de Sistemas') + t('cert_body2', ', abrangendo Engenharia de Software, Banco de Dados, Programação Web, Redes de Computadores, Algoritmos e Segurança da Informação.');
+  var scoreLabel = t('cert_score_label', 'Nota obtida no Quiz');
+  var validationLabel = t('cert_validation', 'Código de Validação:');
+  var institutionLabel = t('cert_institution', 'Instituição:');
+  var courseLabel = t('cert_course', 'Curso:');
+  var groupLabel = t('cert_group', 'Grupo:');
+  var dateLabel = t('cert_date', 'Data:');
+  var statusDist = t('cert_status_dist', 'APROVADO COM DISTINÇÃO');
+  var statusOk = t('cert_status_ok', 'APROVADO');
+  var statusPart = t('cert_status_part', 'PARTICIPAÇÃO');
+
+  var canvas = document.getElementById('cert-canvas');
+  var W = 900, H = 780;
+  canvas.width = W; canvas.height = H;
+  var ctx = canvas.getContext('2d');
+
+  ctx.fillStyle = '#f8faff'; ctx.fillRect(0,0,W,H);
+  ctx.fillStyle = '#ffffff';
+  certRoundRect(ctx,20,20,W-40,H-40,12); ctx.fill();
+  ctx.strokeStyle = '#1a2f6e'; ctx.lineWidth = 6;
+  certRoundRect(ctx,20,20,W-40,H-40,12); ctx.stroke();
+  ctx.strokeStyle = '#2e6fbd'; ctx.lineWidth = 1.5;
+  certRoundRect(ctx,30,30,W-60,H-60,8); ctx.stroke();
+
+  var grad = ctx.createLinearGradient(0,0,W,0);
+  grad.addColorStop(0,'#1a2f6e'); grad.addColorStop(0.5,'#7400ec'); grad.addColorStop(1,'#1a2f6e');
+  ctx.fillStyle = grad; certRoundRectTop(ctx,20,20,W-40,65,12); ctx.fill();
+  ctx.fillStyle='#ffffff'; ctx.font='600 14px Arial,sans-serif'; ctx.textAlign='center';
+  certDrawSpaced(ctx, t('cert_doc_title','Certificado de Conclusão').toUpperCase(), W/2, 58, 3);
+
+  function drawRest() {
+    ctx.fillStyle='#1a2f6e'; ctx.font='bold 20px Arial,sans-serif'; ctx.textAlign='left';
+    ctx.fillText('ODA · ADS',172,128);
+    ctx.fillStyle='#6b88b0'; ctx.font='13px Arial,sans-serif';
+    ctx.fillText(subtitleTxt,172,150);
+
+    ctx.strokeStyle='#dde5f0'; ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(40,208); ctx.lineTo(W-40,208); ctx.stroke();
+    var lg=ctx.createLinearGradient(40,0,W-40,0);
+    lg.addColorStop(0,'transparent'); lg.addColorStop(0.3,'#7400ec'); lg.addColorStop(0.7,'#7400ec'); lg.addColorStop(1,'transparent');
+    ctx.strokeStyle=lg; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.moveTo(40,212); ctx.lineTo(W-40,212); ctx.stroke();
+
+    ctx.fillStyle='#8faabf'; ctx.font='italic 14px Georgia,serif'; ctx.textAlign='center';
+    ctx.fillText(certifyTxt,W/2,252);
+
+    ctx.fillStyle='#1a2f6e';
+    var fs=38; ctx.font='bold '+fs+'px Georgia,serif';
+    while(ctx.measureText(nome).width>W-130 && fs>20){fs-=2;ctx.font='bold '+fs+'px Georgia,serif';}
+    ctx.fillText(nome,W/2,302);
+    var nW=Math.min(ctx.measureText(nome).width+60,W-100);
+    var lg2=ctx.createLinearGradient(W/2-nW/2,0,W/2+nW/2,0);
+    lg2.addColorStop(0,'transparent'); lg2.addColorStop(0.2,'#7400ec'); lg2.addColorStop(0.8,'#7400ec'); lg2.addColorStop(1,'transparent');
+    ctx.strokeStyle=lg2; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.moveTo(W/2-nW/2,314); ctx.lineTo(W/2+nW/2,314); ctx.stroke();
+
+    ctx.fillStyle='#4a6080'; ctx.font='14px Arial,sans-serif'; ctx.textAlign='center';
+    var descLines = certWrapLines(ctx, descTxt, W-160);
+    var descY = 346;
+    for (var i = 0; i < descLines.length; i++) { ctx.fillText(descLines[i], W/2, descY); descY += 20; }
+
+    var pct = Math.round((score/total)*100);
+    ctx.font='bold 15px Arial,sans-serif'; ctx.fillStyle='#1a2f6e';
+    ctx.fillText(scoreLabel + ': ' + score + ' / ' + total + ' (' + pct + '%)', W/2, descY + 22);
+
+    var bW=340,bH=32,bX=W/2-bW/2,bY=descY+32;
+    ctx.fillStyle=pct>=90?'#e8f5e9':pct>=70?'#e3f2fd':'#fff3e0';
+    certRoundRect(ctx,bX,bY,bW,bH,8); ctx.fill();
+    ctx.strokeStyle=pct>=90?'#81c784':pct>=70?'#64b5f6':'#ffb74d'; ctx.lineWidth=1.5;
+    certRoundRect(ctx,bX,bY,bW,bH,8); ctx.stroke();
+    ctx.fillStyle=pct>=90?'#2e7d32':pct>=70?'#1565c0':'#e65100';
+    ctx.font='bold 13px Arial,sans-serif';
+    ctx.fillText(pct>=90?statusDist:pct>=70?statusOk:statusPart, W/2, bY+21);
+
+    var valY = bY + bH + 34;
+    var valW = 380, valH = 34, valX = W/2 - valW/2;
+    ctx.fillStyle = 'rgba(116,0,236,0.06)';
+    certRoundRect(ctx, valX, valY, valW, valH, 8); ctx.fill();
+    ctx.strokeStyle = 'rgba(116,0,236,0.3)'; ctx.lineWidth = 1;
+    certRoundRect(ctx, valX, valY, valW, valH, 8); ctx.stroke();
+    ctx.font = '11px monospace'; ctx.fillStyle = '#6b4fa0';
+    ctx.fillText(validationLabel + ' ' + code, W/2, valY + 21);
+
+    var metaTop = valY + valH + 30;
+    ctx.strokeStyle='#dde5f0'; ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(40,metaTop); ctx.lineTo(W-40,metaTop); ctx.stroke();
+
+    ctx.fillStyle='#4a6080'; ctx.font='12px Arial,sans-serif'; ctx.textAlign='center';
+    var metaY = metaTop + 24;
+    ctx.fillText(institutionLabel + ' Centro Universitário UNIGRANDE', W/2, metaY); metaY += 19;
+    ctx.fillText(courseLabel + ' Análise e Desenvolvimento de Sistemas, 4º Semestre', W/2, metaY); metaY += 19;
+    ctx.fillText(groupLabel + ' Grupo A, Projeto de Extensão', W/2, metaY); metaY += 19;
+    ctx.fillText(dateLabel + ' ' + dateStr, W/2, metaY); metaY += 30;
+
+    ctx.strokeStyle='#1a2f6e'; ctx.lineWidth=1.5;
+    ctx.beginPath(); ctx.moveTo(W/2-110,metaY); ctx.lineTo(W/2+110,metaY); ctx.stroke();
+    metaY += 18;
+    ctx.fillStyle='#1a2f6e'; ctx.font='bold 13px Arial,sans-serif'; ctx.fillText('ODA · ADS', W/2, metaY);
+    metaY += 16;
+    ctx.fillStyle='#8faabf'; ctx.font='11px Arial,sans-serif'; ctx.fillText(subtitleTxt, W/2, metaY);
+  }
+
+  var logoImg = new Image();
+  logoImg.onload = function () {
+    ctx.save(); ctx.beginPath(); ctx.arc(100,148,52,0,Math.PI*2);
+    ctx.fillStyle='#fff'; ctx.fill();
+    ctx.strokeStyle='#dde5f0'; ctx.lineWidth=1.5; ctx.stroke();
+    ctx.clip(); ctx.drawImage(logoImg,52,100,96,96); ctx.restore();
+    drawRest();
+  };
+  logoImg.onerror = drawRest;
+  logoImg.src = CERT_LOGO;
+}
+
+function downloadCert() {
+  var canvas = document.getElementById('cert-canvas');
+  var ni = document.getElementById('cert-name-input');
+  var nome = (ni ? ni.value.trim() : 'certificado').replace(/\s+/g,'-');
+  var a = document.createElement('a');
+  a.href = canvas.toDataURL('image/png');
+  a.download = 'certificado-oda-ads-' + nome + '.png';
+  a.click();
+  if (typeof showToast === 'function') showToast('✓ Certificado baixado!', 2000);
+}
+
 function copiarCodigo() {
-  var codeEl = document.getElementById('cert-code-display');
-  var code = codeEl ? codeEl.textContent : '';
-  if (!code || code === '-') return;
+  if (!_certCode) return;
   if (navigator.clipboard) {
-    navigator.clipboard.writeText(code).then(function() {
+    navigator.clipboard.writeText(_certCode).then(function() {
       if (typeof showToast === 'function') showToast('✓ Código copiado!', 2000);
     });
   }
