@@ -50,7 +50,9 @@ O **ODA·ADS** é uma plataforma educacional single-page construída em HTML/CSS
 ## Estrutura
 
 ```
-oda_ads.html   ← aplicação completa em arquivo único
+index.html   ← marcação HTML
+style.css    ← estilos
+script.js    ← lógica (quiz, flashcards, certificado, tema, etc.)
 README.md
 ```
 
@@ -60,11 +62,11 @@ README.md
 
 ```bash
 # Clone o repositório
-git clone https://github.com/sethudsondev/oda-ads.git
-cd oda-ads
+git clone https://github.com/sethudsondev/ODAADS.git
+cd ODAADS
 
 # Abra direto no navegador — sem servidor necessário
-open oda_ads.html
+open index.html
 ```
 
 > Ou acesse pelo GitHub Pages se configurado no repositório.
