@@ -800,3 +800,34 @@ function shareResult() {
     if (typeof showToast === 'function') showToast('✓ Resultado copiado!', 2000);
   }
 }
+
+// ── INSTALAR COMO APP (PWA) ──
+var _pwaDeferred = null;
+window.addEventListener('beforeinstallprompt', function(e) {
+  e.preventDefault();
+  _pwaDeferred = e;
+  var btn1 = document.getElementById('btn-install-app');
+  var btn2 = document.getElementById('btn-install-app-mobile');
+  if (btn1) btn1.style.display = 'inline-flex';
+  if (btn2) btn2.style.display = 'block';
+});
+window.addEventListener('appinstalled', function() {
+  var btn1 = document.getElementById('btn-install-app');
+  var btn2 = document.getElementById('btn-install-app-mobile');
+  if (btn1) btn1.style.display = 'none';
+  if (btn2) btn2.style.display = 'none';
+  if (typeof showToast === 'function') showToast('✓ App instalado com sucesso!', 3000);
+});
+function installApp() {
+  if (_pwaDeferred) {
+    _pwaDeferred.prompt();
+    _pwaDeferred.userChoice.then(function() { _pwaDeferred = null; });
+  } else if (typeof showToast === 'function') {
+    showToast('Para instalar: menu ⋮ do navegador → Adicionar à tela inicial', 4000);
+  }
+}
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js').catch(function() {});
+  });
+}
