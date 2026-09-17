@@ -831,3 +831,15 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js').catch(function() {});
   });
 }
+
+// ── TUTORIAL NA PRIMEIRA VISITA ──
+document.addEventListener('DOMContentLoaded', function() {
+  var jaViu = false;
+  try { jaViu = localStorage.getItem('oda-tutorial-visto') === '1'; } catch (e) {}
+  if (!jaViu) {
+    setTimeout(function() {
+      if (typeof openModal === 'function') openModal('tutorial-modal');
+      try { localStorage.setItem('oda-tutorial-visto', '1'); } catch (e) {}
+    }, 1200);
+  }
+});
