@@ -1,4 +1,4 @@
-// Service Worker — ODA·ADS v1
+// Service Worker · ODA·ADS v1
 // Cache-first pro shell do app (funciona offline apos a primeira visita).
 
 const CACHE_NAME = 'oda-ads-v1';

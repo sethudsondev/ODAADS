@@ -778,7 +778,7 @@
     nav { padding: 0.85rem 1rem; }
     .nav-links { display: none; }
 
-    /* Hero — principal responsável pelo corte */
+    /* Hero: principal responsavel pelo corte */
     #hero { padding: 6rem 1rem 3rem; min-height: auto; }
     .hero-content { width: 100%; padding: 0; }
     h1 { font-size: clamp(1.3rem, 5.5vw, 1.9rem); letter-spacing: -0.03em; word-break: break-word; }
@@ -804,7 +804,7 @@
     #quiz { padding: 3.5rem 1rem; }
     #faq { padding: 3.5rem 1rem; }
 
-    /* Grids — coluna única */
+    /* Grids: coluna unica */
     .modules-grid { grid-template-columns: 1fr; }
     .concepts-grid { grid-template-columns: 1fr; }
     .fc-grid { grid-template-columns: 1fr; }
@@ -2281,7 +2281,7 @@
   }
 
 
-  /* Nomes dos integrantes — fonte uniforme */
+  /* Nomes dos integrantes: fonte uniforme */
   .about-card [style*="font-display"][style*="font-weight"] {
     font-family: var(--font-display) !important;
     font-weight: 700 !important;

@@ -1,7 +1,7 @@
 {
   "name": "ODA · Análise e Desenvolvimento de Sistemas",
   "short_name": "ODA-ADS",
-  "description": "Objeto Digital de Aprendizagem interativo de ADS — 7 módulos, quiz com 34 questões, flashcards e certificado digital. UNIGRANDE Grupo A.",
+  "description": "Objeto Digital de Aprendizagem interativo de ADS: 7 módulos, quiz com 34 questões, flashcards e certificado digital. UNIGRANDE Grupo A.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

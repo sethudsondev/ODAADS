@@ -1,6 +1,6 @@
 # ODA · Análise e Desenvolvimento de Sistemas
 
-> Objeto Digital de Aprendizagem interativo desenvolvido como Projeto de Extensão — UNIGRANDE Grupo A, 4º Semestre 2026.
+> Objeto Digital de Aprendizagem interativo desenvolvido como Projeto de Extensão, UNIGRANDE Grupo A, 4º Semestre 2026.
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
@@ -65,7 +65,7 @@ README.md
 git clone https://github.com/sethudsondev/ODAADS.git
 cd ODAADS
 
-# Abra direto no navegador — sem servidor necessário
+# Abra direto no navegador, sem servidor necessario
 open index.html
 ```
 
@@ -97,16 +97,16 @@ Desenvolvido como parte do **Projeto de Extensão** do curso de ADS no Centro Un
 
 ---
 
-## Grupo A — Desenvolvedores
+## Grupo A - Desenvolvedores
 
 | Nome | Papel | Polo |
 |---|---|---|
-| **Set Hudson Leite Costa** | Desenvolvedor Principal | Polo Amaralina — Bom Jesus da Lapa, BA |
-| **George Alexandre Galeno** | Conteúdo & Pesquisa | Polo Centro — Parnaíba, PI |
-| **Joana D'Arc** | Documentação & QA | Polo Cambolo — Porto Seguro, BA |
+| **Set Hudson Leite Costa** | Desenvolvedor Principal | Polo Amaralina, Bom Jesus da Lapa, BA |
+| **George Alexandre Galeno** | Conteúdo & Pesquisa | Polo Centro, Parnaíba, PI |
+| **Joana D'Arc** | Documentação & QA | Polo Cambolo, Porto Seguro, BA |
 | **Gabrielly Moitinho Viana Souza** | Desenvolvedora Front-End / Power BI | Polo Vitória da Conquista, BA |
 
-ADS — Centro Universitário UNIGRANDE · 4º Semestre 2026
+ADS · Centro Universitário UNIGRANDE · 4º Semestre 2026
 
 ---
 
@@ -114,4 +114,4 @@ ADS — Centro Universitário UNIGRANDE · 4º Semestre 2026
 
 ![License](https://img.shields.io/badge/Licenca-MIT-green?style=flat&logo=opensourceinitiative&logoColor=white)
 
-MIT — livre para uso educacional.
+MIT, livre para uso educacional.

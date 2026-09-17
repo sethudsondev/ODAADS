@@ -41,7 +41,7 @@ const allQuestions = [
   { cat: "Engenharia de Software", q: "No modelo MVC, qual camada é responsável pela regra de negócio?", opts: ["View", "Controller", "Model", "Router"], correct: 2, fb: "O Model cuida dos dados e da lógica de negócio. View é a interface; Controller é o intermediário." },
   { cat: "Engenharia de Software", q: "O que é a Sprint Retrospective no Scrum?", opts: ["Reunião para planejar próxima Sprint", "Reunião para revisar o produto entregue", "Reunião para inspecionar e adaptar o processo da equipe", "Reunião diária de 15 minutos"], correct: 2, fb: "A Retrospective ocorre ao final de cada Sprint para o time refletir sobre seu processo e definir melhorias." },
   { cat: "Engenharia de Software", q: "Qual diagrama UML representa a sequência de mensagens entre objetos?", opts: ["Diagrama de Classe", "Diagrama de Caso de Uso", "Diagrama de Sequência", "Diagrama de Estado"], correct: 2, fb: "O Diagrama de Sequência mostra como os objetos interagem ao longo do tempo, com mensagens ordenadas." },
-  { cat: "Engenharia de Software", q: "O que significa TDD (Test-Driven Development)?", opts: ["Desenvolvimento guiado por tecnologia", "Desenvolvimento guiado por testes — escrever o teste antes do código", "Técnica de documentação de dados", "Tipo de deploy automatizado"], correct: 1, fb: "No TDD, o ciclo é: escrever teste (falha) → escrever código mínimo (passa) → refatorar." },
+  { cat: "Engenharia de Software", q: "O que significa TDD (Test-Driven Development)?", opts: ["Desenvolvimento guiado por tecnologia", "Desenvolvimento guiado por testes: escrever o teste antes do código", "Técnica de documentação de dados", "Tipo de deploy automatizado"], correct: 1, fb: "No TDD, o ciclo é: escrever teste (falha) → escrever código mínimo (passa) → refatorar." },
   { cat: "Engenharia de Software", q: "Qual é o papel do Product Owner no Scrum?", opts: ["Gerenciar a equipe técnica", "Maximizar o valor do produto e gerenciar o Product Backlog", "Facilitar as cerimônias Scrum", "Escrever o código do sistema"], correct: 1, fb: "O Product Owner representa os stakeholders, prioriza o Backlog e garante que o time entregue valor." },
 
   // ── BANCO DE DADOS ──
@@ -64,14 +64,14 @@ const allQuestions = [
   { cat: "Redes de Computadores", q: "Qual camada do modelo OSI é responsável pelo endereçamento IP?", opts: ["Camada de Enlace", "Camada Física", "Camada de Rede", "Camada de Transporte"], correct: 2, fb: "A Camada de Rede (Camada 3) cuida do endereçamento lógico (IP) e do roteamento entre redes." },
   { cat: "Redes de Computadores", q: "Qual protocolo é usado por padrão para comunicação segura na web (HTTPS)?", opts: ["FTP", "SSH", "TLS/SSL", "UDP"], correct: 2, fb: "HTTPS usa TLS (Transport Layer Security) para criptografar a comunicação entre cliente e servidor." },
   { cat: "Redes de Computadores", q: "O que significa a notação CIDR /24 em um endereço de rede?", opts: ["24 hosts disponíveis", "Máscara de 24 bits (255.255.255.0), permitindo 254 hosts", "24 sub-redes", "Velocidade de 24 Mbps"], correct: 1, fb: "/24 significa que os primeiros 24 bits são a parte de rede, deixando 8 bits para hosts (254 utilizáveis)." },
-  { cat: "Redes de Computadores", q: "Qual a principal diferença entre TCP e UDP?", opts: ["TCP é mais rápido; UDP é mais confiável", "TCP garante entrega ordenada; UDP é sem conexão e mais rápido", "TCP é para vídeo; UDP é para texto", "Não há diferença prática"], correct: 1, fb: "TCP usa handshake e confirmações (confiável e ordenado). UDP não confirma entrega — usado em streaming e jogos." },
+  { cat: "Redes de Computadores", q: "Qual a principal diferença entre TCP e UDP?", opts: ["TCP é mais rápido; UDP é mais confiável", "TCP garante entrega ordenada; UDP é sem conexão e mais rápido", "TCP é para vídeo; UDP é para texto", "Não há diferença prática"], correct: 1, fb: "TCP usa handshake e confirmações (confiável e ordenado). UDP não confirma entrega, usado em streaming e jogos." },
   { cat: "Redes de Computadores", q: "Qual protocolo converte nomes de domínio em endereços IP?", opts: ["DHCP", "DNS", "FTP", "SMTP"], correct: 1, fb: "DNS (Domain Name System) traduz nomes como 'google.com' para endereços IP como '142.250.74.46'." },
   { cat: "Redes de Computadores", q: "O que é NAT (Network Address Translation)?", opts: ["Um tipo de cabo de rede", "Tradução de endereços privados para públicos permitindo compartilhar uma IP", "Protocolo de roteamento dinâmico", "Tipo de firewall"], correct: 1, fb: "NAT permite que múltiplos dispositivos de uma rede privada compartilhem um único IP público." },
 
   // ── ALGORITMOS E ESTRUTURAS ──
   { cat: "Algoritmos e Estruturas", q: "Qual é a complexidade do algoritmo de Busca Binária em um array ordenado?", opts: ["O(n)", "O(log n)", "O(n²)", "O(1)"], correct: 1, fb: "Busca Binária divide o espaço de busca pela metade a cada iteração → O(log n)." },
-  { cat: "Algoritmos e Estruturas", q: "Qual estrutura de dados segue o princípio LIFO (Last In, First Out)?", opts: ["Fila (Queue)", "Pilha (Stack)", "Árvore Binária", "Lista Ligada"], correct: 1, fb: "A Pilha (Stack) funciona como uma pilha de pratos — o último a entrar é o primeiro a sair." },
-  { cat: "Algoritmos e Estruturas", q: "Qual algoritmo de ordenação tem complexidade média O(n log n)?", opts: ["Bubble Sort", "Insertion Sort", "Selection Sort", "Merge Sort"], correct: 3, fb: "Merge Sort divide o array recursivamente e combina — garantindo O(n log n) em todos os casos." },
+  { cat: "Algoritmos e Estruturas", q: "Qual estrutura de dados segue o princípio LIFO (Last In, First Out)?", opts: ["Fila (Queue)", "Pilha (Stack)", "Árvore Binária", "Lista Ligada"], correct: 1, fb: "A Pilha (Stack) funciona como uma pilha de pratos: o último a entrar é o primeiro a sair." },
+  { cat: "Algoritmos e Estruturas", q: "Qual algoritmo de ordenação tem complexidade média O(n log n)?", opts: ["Bubble Sort", "Insertion Sort", "Selection Sort", "Merge Sort"], correct: 3, fb: "Merge Sort divide o array recursivamente e combina, garantindo O(n log n) em todos os casos." },
   { cat: "Algoritmos e Estruturas", q: "Na programação orientada a objetos, o que é encapsulamento?", opts: ["Criar objetos a partir de uma classe", "Herdar atributos de outra classe", "Ocultar detalhes internos expondo apenas a interface necessária", "Sobrescrever métodos da classe pai"], correct: 2, fb: "Encapsulamento protege dados internos via modificadores de acesso (private/public/protected)." },
   { cat: "Algoritmos e Estruturas", q: "O que é uma Árvore Binária de Busca (BST)?", opts: ["Árvore onde cada nó tem exatamente 2 filhos", "Árvore onde nós à esquerda são menores e à direita maiores que o pai", "Árvore usada apenas para ordenação", "Árvore com altura sempre balanceada"], correct: 1, fb: "Em uma BST, para cada nó: todos os valores à esquerda são menores e à direita são maiores." },
 
@@ -80,7 +80,7 @@ const allQuestions = [
   { cat: "Segurança da Informação", q: "O que os princípios CIA representam em segurança da informação?", opts: ["Controle, Integridade, Acesso", "Confidencialidade, Integridade, Disponibilidade", "Criptografia, Identificação, Autenticação", "Código, Interface, Aplicação"], correct: 1, fb: "CIA Triad: Confidencialidade (acesso restrito), Integridade (dados não adulterados) e Disponibilidade (sistema acessível)." },
   { cat: "Segurança da Informação", q: "Qual a diferença entre criptografia simétrica e assimétrica?", opts: ["Simétrica usa chaves diferentes; assimétrica usa a mesma chave", "Simétrica usa a mesma chave; assimétrica usa par de chaves (pública/privada)", "Simétrica é mais segura; assimétrica é mais rápida", "Não há diferença prática"], correct: 1, fb: "Simétrica (AES): mesma chave para cifrar/decifrar. Assimétrica (RSA): chave pública cifra, privada decifra." },
   { cat: "Segurança da Informação", q: "O que é XSS (Cross-Site Scripting)?", opts: ["Ataque de força bruta de senhas", "Injeção de scripts maliciosos em páginas web visualizadas por outros usuários", "Intercepção de tráfego de rede", "Tipo de ataque de negação de serviço"], correct: 1, fb: "XSS injeta código JavaScript malicioso em páginas confiáveis, executado no browser da vítima." },
-  { cat: "Segurança da Informação", q: "Qual lei brasileira regula a proteção de dados pessoais?", opts: ["Lei de Acesso à Informação (LAI)", "Lei Geral de Proteção de Dados (LGPD — Lei 13.709/2018)", "Código de Defesa do Consumidor", "Marco Civil da Internet"], correct: 1, fb: "A LGPD (Lei 13.709/2018) regula o tratamento de dados pessoais no Brasil, inspirada na GDPR europeia." }
+  { cat: "Segurança da Informação", q: "Qual lei brasileira regula a proteção de dados pessoais?", opts: ["Lei de Acesso à Informação (LAI)", "Lei Geral de Proteção de Dados (LGPD, Lei 13.709/2018)", "Código de Defesa do Consumidor", "Marco Civil da Internet"], correct: 1, fb: "A LGPD (Lei 13.709/2018) regula o tratamento de dados pessoais no Brasil, inspirada na GDPR europeia." }
 ];
 
 // Embaralhar e selecionar 10 questões (2 por categoria)
@@ -550,7 +550,7 @@ function startQuizTimer() {
     if (_quizTimerSeconds <= 5) fill.style.background = 'var(--accent3)';
     if (_quizTimerSeconds <= 0) {
       clearInterval(_quizTimerInterval);
-      // tempo esgotado — avança como errada
+      // tempo esgotado, avanca como errada
       if (typeof answered !== 'undefined' && !answered) {
         answered = true;
         var opts = document.querySelectorAll('.quiz-option');
@@ -782,7 +782,7 @@ function generateCert() {
 function copiarCodigo() {
   var codeEl = document.getElementById('cert-code-display');
   var code = codeEl ? codeEl.textContent : '';
-  if (!code || code === '—') return;
+  if (!code || code === '-') return;
   if (navigator.clipboard) {
     navigator.clipboard.writeText(code).then(function() {
       if (typeof showToast === 'function') showToast('✓ Código copiado!', 2000);
