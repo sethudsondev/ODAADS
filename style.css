@@ -2354,6 +2354,7 @@
     }
     .side-nav-links a:hover { color: var(--white); background: var(--border); }
     .side-nav-links a.active { color: var(--white); background: rgba(108,99,255,0.14); border-left: 2px solid var(--accent); }
+    .side-nav-bottom { display: flex; flex-direction: column; gap: 0.5rem; }
     .side-nav-help {
       font-family: var(--font-mono);
       font-size: 0.72rem;
@@ -2365,6 +2366,19 @@
       cursor: pointer;
     }
     .side-nav-help:hover { background: rgba(108,99,255,0.16); }
+
+    .side-nav-install {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg,#7400ec,#007bef);
+      border: none;
+      border-radius: 8px;
+      padding: 0.6rem;
+      cursor: pointer;
+    }
+    .side-nav-install:hover { opacity: 0.9; }
   }
 
   body.light-mode .side-nav { background: rgba(255,255,255,0.9); }
@@ -2373,6 +2387,7 @@
      entre sistemas/fontes - o print que o usuario mandou mostrava so um
      glifo generico no lugar do emoji). */
   .ic { width: 1.1em; height: 1.1em; flex-shrink: 0; vertical-align: -0.15em; }
-  .side-nav-links a, .side-nav-help { display: flex !important; align-items: center; gap: 0.65rem; }
-  .side-nav-links .ic, .side-nav-help .ic { width: 16px; height: 16px; }
+  .side-nav-links a, .side-nav-help, .side-nav-install { display: flex !important; align-items: center; gap: 0.65rem; }
+  .side-nav-install { justify-content: center; }
+  .side-nav-links .ic, .side-nav-help .ic, .side-nav-install .ic { width: 16px; height: 16px; }
   .mobile-menu a .ic, #btn-install-app-mobile .ic { width: 18px; height: 18px; }
