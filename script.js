@@ -575,13 +575,13 @@ function stopQuizTimer() {
   if (fill) { fill.style.transition = 'none'; fill.style.width = '100%'; }
 }
 
-// ── SCROLL SPY: destacar link ativo na nav ──
+// ── SCROLL SPY: destacar link ativo na nav (topo + menu lateral) ──
 (function() {
   var sections = ['modulos','roadmap-section','conceitos','flashcards','quiz','faq','sobre','referencias'];
   var links = {};
   sections.forEach(function(id) {
-    var a = document.querySelector('nav a[href="#' + id + '"]');
-    if (a) links[id] = a;
+    var as = document.querySelectorAll('nav a[href="#' + id + '"], .side-nav-links a[href="#' + id + '"]');
+    if (as.length) links[id] = as;
   });
 
   function updateActive() {
@@ -591,8 +591,8 @@ function stopQuizTimer() {
       var el = document.getElementById(id);
       if (el && el.offsetTop <= scrollY) active = id;
     });
-    Object.values(links).forEach(function(a) { a.classList.remove('active'); });
-    if (active && links[active]) links[active].classList.add('active');
+    Object.values(links).forEach(function(as) { as.forEach(function(a) { a.classList.remove('active'); }); });
+    if (active && links[active]) links[active].forEach(function(a) { a.classList.add('active'); });
   }
 
   window.addEventListener('scroll', updateActive, { passive: true });
@@ -802,14 +802,14 @@ function shareResult() {
 }
 
 // ── INSTALAR COMO APP (PWA) ──
+// O botao fica sempre visivel (nao so quando o navegador dispara
+// beforeinstallprompt), pra garantir que o usuario sempre encontre o
+// caminho de instalar - com uma instrucao manual quando o navegador nao
+// suporta o prompt nativo (ex.: iOS/Safari).
 var _pwaDeferred = null;
 window.addEventListener('beforeinstallprompt', function(e) {
   e.preventDefault();
   _pwaDeferred = e;
-  var btn1 = document.getElementById('btn-install-app');
-  var btn2 = document.getElementById('btn-install-app-mobile');
-  if (btn1) btn1.style.display = 'inline-flex';
-  if (btn2) btn2.style.display = 'block';
 });
 window.addEventListener('appinstalled', function() {
   var btn1 = document.getElementById('btn-install-app');
@@ -822,8 +822,14 @@ function installApp() {
   if (_pwaDeferred) {
     _pwaDeferred.prompt();
     _pwaDeferred.userChoice.then(function() { _pwaDeferred = null; });
-  } else if (typeof showToast === 'function') {
-    showToast('Para instalar: menu ⋮ do navegador → Adicionar à tela inicial', 4000);
+    return;
+  }
+  if (typeof showToast !== 'function') return;
+  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  if (isIOS) {
+    showToast('No Safari: toque em compartilhar (⬆) e depois em "Adicionar à Tela de Início"', 5000);
+  } else {
+    showToast('Para instalar: menu do navegador → "Adicionar à tela inicial" ou "Instalar app"', 5000);
   }
 }
 if ('serviceWorker' in navigator) {

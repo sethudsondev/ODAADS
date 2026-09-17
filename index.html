@@ -46,7 +46,7 @@
 
   <div class="nav-actions">
     <button onclick="openModal('tutorial-modal')" title="Como usar" aria-label="Como usar o site" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(116,0,236,0.12);border:1px solid rgba(116,0,236,0.3);color:var(--accent,#7400ec);cursor:pointer;font-family:var(--font-mono,monospace);font-weight:700;font-size:0.85rem;">?</button>
-    <button id="btn-install-app" onclick="installApp()" title="Instalar como app" aria-label="Instalar como app" style="display:none;align-items:center;gap:6px;background:linear-gradient(135deg,#7400ec,#007bef);color:#fff;border:none;padding:0.5rem 0.9rem;border-radius:8px;font-size:0.78rem;font-weight:700;cursor:pointer;">
+    <button id="btn-install-app" onclick="installApp()" title="Instalar como app" aria-label="Instalar como app" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#7400ec,#007bef);color:#fff;border:none;padding:0.5rem 0.9rem;border-radius:8px;font-size:0.78rem;font-weight:700;cursor:pointer;">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v13M8 11l4 4 4-4"/><path d="M20 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2"/></svg>
       Instalar App
     </button>
@@ -57,6 +57,21 @@
     <button class="hamburger" id="hamburger" aria-label="Abrir menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
+<!-- MENU LATERAL (desktop) -->
+<aside class="side-nav" id="side-nav" aria-label="Navegação principal">
+  <ul class="side-nav-links">
+    <li><a href="#modulos">🏗️ Módulos</a></li>
+    <li><a href="#roadmap-section">🗺️ Roadmap</a></li>
+    <li><a href="#conceitos">📖 Conceitos</a></li>
+    <li><a href="#flashcards">🃏 Flashcards</a></li>
+    <li><a href="#quiz">⚡ Quiz</a></li>
+    <li><a href="#faq">💬 FAQ</a></li>
+    <li><a href="#sobre">👥 Sobre</a></li>
+    <li><a href="#referencias">📚 ABNT</a></li>
+  </ul>
+  <button class="side-nav-help" onclick="openModal('tutorial-modal')">❓ Como usar</button>
+</aside>
 
 <!-- Overlay + Drawer mobile -->
 <div class="mobile-drawer" id="mobile-drawer" onclick="closeMenu()"></div>
@@ -71,7 +86,7 @@
   <a href="#sobre" onclick="closeMenu()">👥 Sobre o Grupo A</a>
   <a href="#referencias" onclick="closeMenu()">📚 Referências ABNT</a>
   <a href="#" onclick="closeMenu();openModal('tutorial-modal');return false;">❓ Como usar</a>
-  <button id="btn-install-app-mobile" onclick="installApp()" style="display:none;margin-top:0.75rem;width:100%;background:linear-gradient(135deg,#7400ec,#007bef);color:#fff;border:none;padding:0.65rem;border-radius:8px;font-size:0.85rem;font-weight:700;cursor:pointer;">📲 Instalar App</button>
+  <button id="btn-install-app-mobile" onclick="installApp()" style="display:block;margin-top:0.75rem;width:100%;background:linear-gradient(135deg,#7400ec,#007bef);color:#fff;border:none;padding:0.65rem;border-radius:8px;font-size:0.85rem;font-weight:700;cursor:pointer;">📲 Instalar App</button>
 </div>
 
 <!-- HERO -->

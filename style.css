@@ -2293,3 +2293,60 @@
   /* About cards: tipografia uniforme */
   .about-card { text-align: center; }
   .about-card img { display: block !important; opacity: 1 !important; }
+
+
+  /* ── MENU LATERAL (desktop) ──
+     Escondido por padrao; aparece so em telas largas, substituindo os
+     links horizontais do topo (evita navegacao duplicada). No mobile/
+     tablet continua tudo como antes (nav do topo + menu hamburguer). */
+  .side-nav { display: none; }
+
+  @media (min-width: 1100px) {
+    nav .nav-links { display: none; }
+
+    body { padding-left: 230px; }
+
+    .side-nav {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: fixed;
+      top: 77px;
+      left: 0;
+      bottom: 0;
+      width: 230px;
+      padding: 1.5rem 1rem;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(20px);
+      border-right: 1px solid var(--border);
+      z-index: 150;
+      overflow-y: auto;
+    }
+    .side-nav-links { list-style: none; display: flex; flex-direction: column; gap: 0.25rem; }
+    .side-nav-links a {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 0.65rem 0.9rem;
+      border-radius: 8px;
+      transition: all 0.2s;
+      letter-spacing: 0.03em;
+    }
+    .side-nav-links a:hover { color: var(--white); background: var(--border); }
+    .side-nav-links a.active { color: var(--white); background: rgba(108,99,255,0.14); border-left: 2px solid var(--accent); }
+    .side-nav-help {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      background: rgba(108,99,255,0.08);
+      border: 1px solid rgba(108,99,255,0.25);
+      border-radius: 8px;
+      padding: 0.6rem;
+      cursor: pointer;
+    }
+    .side-nav-help:hover { background: rgba(108,99,255,0.16); }
+  }
+
+  body.light-mode .side-nav { background: rgba(255,255,255,0.9); }
