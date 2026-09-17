@@ -3171,18 +3171,10 @@ const allQuestions = [
 
 // Embaralhar e selecionar 10 questões (2 por categoria)
 function shuffleQuestions() {
-  const cats = {};
-  allQuestions.forEach(q => {
-    if (!cats[q.cat]) cats[q.cat] = [];
-    cats[q.cat].push(q);
-  });
-  const selected = [];
-  Object.values(cats).forEach(catQs => {
-    const shuffled = catQs.sort(() => Math.random() - 0.5);
-    selected.push(shuffled[0]);
-    if (shuffled[1]) selected.push(shuffled[1]);
-  });
-  return selected.sort(() => Math.random() - 0.5);
+  // Usa o banco inteiro (34 perguntas, como anunciado no site) so embaralhado -
+  // a versao anterior sorteava so 2 por categoria, entao o quiz nunca passava
+  // de ~14 perguntas.
+  return allQuestions.slice().sort(() => Math.random() - 0.5);
 }
 
 let questions = shuffleQuestions();
@@ -3904,19 +3896,6 @@ function resetCards() {
     '0 de ' + fcTotal + ' cards revelados';
 }
 
-// ── CERTIFICADO ──
-function showCert(s) {
-  window._certScore = s;
-  // Mostrar tela de input, esconder certificado
-  var inputScreen = document.getElementById('cert-input-screen');
-  var genScreen = document.getElementById('cert-generated-screen');
-  var nameInput = document.getElementById('cert-name-input');
-  if (inputScreen) inputScreen.style.display = 'block';
-  if (genScreen) genScreen.style.display = 'none';
-  if (nameInput) { nameInput.value = ''; setTimeout(function(){ nameInput.focus(); }, 300); }
-  document.getElementById('cert-overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
 function closeCert() {
   document.getElementById('cert-overlay').classList.remove('open');
   document.body.style.overflow = '';
@@ -4317,12 +4296,12 @@ var _certScore = 0;
 
 function showCert(s) {
   _certScore = s;
-  var inp = document.getElementById('cert-input-section');
-  var gen = document.getElementById('cert-generated');
-  var inp2 = document.getElementById('cert-name-input');
-  if (inp) inp.style.display = 'block';
-  if (gen) gen.classList.remove('visible');
-  if (inp2) inp2.value = '';
+  var inputScreen = document.getElementById('cert-input-screen');
+  var genScreen = document.getElementById('cert-generated-screen');
+  var nameInput = document.getElementById('cert-name-input');
+  if (inputScreen) inputScreen.style.display = 'block';
+  if (genScreen) genScreen.style.display = 'none';
+  if (nameInput) { nameInput.value = ''; setTimeout(function(){ nameInput.focus(); }, 300); }
   var ov = document.getElementById('cert-overlay');
   if (ov) { ov.classList.add('open'); document.body.style.overflow = 'hidden'; }
 }
