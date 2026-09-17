@@ -660,18 +660,6 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
-// ── STATS DO QUIZ: compartilhar resultado ──
-window.shareResult = function() {
-  if (typeof score === 'undefined' || typeof questions === 'undefined') return;
-  var txt = 'Completei o Quiz do ODA·ADS com ' + score + '/' + questions.length + ' acertos! #ADS #UNIGRANDE';
-  if (navigator.share) {
-    navigator.share({ title: 'Resultado ODA·ADS', text: txt });
-  } else if (navigator.clipboard) {
-    navigator.clipboard.writeText(txt);
-    if (typeof showToast === 'function') showToast('✓ Resultado copiado!', 2000, 'read');
-  }
-};
-
 // ══════════════════════════════════════════════════════
 // RASTREAMENTO DE SCROLL NOS MODAIS
 // ══════════════════════════════════════════════════════
@@ -991,18 +979,6 @@ function copiarCodigo() {
     });
   }
 }
-function shareResult() {
-  var score = window._quizScore || 0;
-  var total = (typeof questions !== 'undefined') ? questions.length : 10;
-  var txt = 'Completei o Quiz do ODA·ADS com ' + score + '/' + total + ' acertos! #ADS #UNIGRANDE';
-  if (navigator.share) {
-    navigator.share({ title: 'Resultado ODA·ADS', text: txt });
-  } else if (navigator.clipboard) {
-    navigator.clipboard.writeText(txt);
-    if (typeof showToast === 'function') showToast('✓ Resultado copiado!', 2000);
-  }
-}
-
 // ── INSTALAR COMO APP (PWA) ──
 // O botao fica sempre visivel (nao so quando o navegador dispara
 // beforeinstallprompt), pra garantir que o usuario sempre encontre o

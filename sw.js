@@ -17,6 +17,12 @@ const STATIC_ASSETS = [
   '/logo.jpg',
   '/icon-192.png',
   '/icon-512.png',
+  '/icon-180.png',
+  '/favicon-32.png',
+  '/avatar-1.jpg',
+  '/avatar-2.jpg',
+  '/avatar-3.jpg',
+  '/avatar-4.jpg',
 ];
 
 self.addEventListener('install', event => {

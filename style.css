@@ -849,8 +849,6 @@
 
     /* Certificado */
     .cert-box { padding: 2rem 1.25rem; border-radius: 16px; }
-    .cert-heading { font-size: 1.5rem; }
-    .cert-name { font-size: 1.25rem; }
 
     /* Flashcard menor em mobile */
     .fc-card { height: 185px; }
@@ -1270,108 +1268,11 @@
   }
   .cert-close:hover { background: var(--accent3); color: #fff; }
 
-  .cert-seal { font-size: 1.8rem; margin-bottom: 1rem; animation: spin-glow 4s linear infinite; }
-
-  .cert-title {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--accent2);
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    margin-bottom: 1.5rem;
-  }
-
-  .cert-heading {
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--white);
-    line-height: 1.15;
-    margin-bottom: 0.5rem;
-  }
-
-  .cert-issued-to {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.25rem;
-  }
-
-  .cert-name {
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: var(--accent);
-    margin-bottom: 1.5rem;
-  }
-
-  .cert-body {
-    font-size: 0.95rem;
-    color: var(--muted);
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-  }
-
-  .cert-score-box {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    background: rgba(0,229,195,0.08);
-    border: 1px solid rgba(0,229,195,0.3);
-    border-radius: 12px;
-    padding: 0.75rem 1.5rem;
-    margin-bottom: 1.75rem;
-  }
-
-  .cert-score-label {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  .cert-score-value {
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: var(--accent2);
-  }
-
-  .cert-divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 1.5rem 0;
-  }
-
-  .cert-meta {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-    line-height: 2;
-  }
-
-  .cert-meta span { color: var(--text); }
-
   .cert-actions {
     display: flex;
     gap: 0.75rem;
     justify-content: center;
     margin-top: 1.5rem;
-  }
-
-  @media print {
-    body > *:not(#cert-overlay) { display: none !important; }
-    #cert-overlay { position: static; background: #fff; display: block !important; padding: 0; }
-    .cert-box { border: 2px solid #6c63ff; box-shadow: none; color: #000; }
-    .cert-close, .cert-actions { display: none !important; }
-    .cert-heading, .cert-name { color: #6c63ff; }
-    .cert-title, .cert-issued-to, .cert-meta { color: #555; }
-    .cert-score-box { border-color: #00e5c3; background: #f0fdf9; }
-    .cert-score-value { color: #00b89a; }
   }
 
 
@@ -2136,8 +2037,6 @@
   .accordion-title       { font-size: 0.88rem !important; }
   .stat-num              { font-size: 1.3rem !important; }
   .stat-label            { font-size: 0.65rem !important; }
-  .cert-heading          { font-size: 1.1rem !important; }
-  .cert-name-display     { font-size: 1.6rem !important; }
   .result-score          { font-size: 2rem !important; }
   footer                 { font-size: 0.8rem !important; }
   .nav-links a           { font-size: 0.78rem !important; }
