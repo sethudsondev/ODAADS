@@ -857,7 +857,23 @@ function installApp() {
 }
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/sw.js').catch(function() {});
+    navigator.serviceWorker.register('/sw.js').then(function(reg) {
+      // Forca uma checagem de atualizacao agora (nao espera o timer implicito
+      // do navegador, que pode demorar). Isso e o que resolve quem ficou
+      // preso numa versao antiga por causa do cache-first da v1 do SW.
+      reg.update().catch(function() {});
+      // Quando uma versao nova assume o controle da pagina, recarrega uma
+      // unica vez pra buscar o HTML/CSS/JS fresco (guarda em sessionStorage
+      // pra nao entrar em loop se algo der errado).
+      navigator.serviceWorker.addEventListener('controllerchange', function() {
+        var jaRecarregou = false;
+        try { jaRecarregou = sessionStorage.getItem('oda-sw-reloaded') === '1'; } catch (e) {}
+        if (!jaRecarregou) {
+          try { sessionStorage.setItem('oda-sw-reloaded', '1'); } catch (e) {}
+          window.location.reload();
+        }
+      });
+    }).catch(function() {});
   });
 }
 
