@@ -34,21 +34,22 @@
 <nav>
   <div class="nav-logo" style="display:flex;align-items:center;gap:0.6rem;"><img src="logo.jpg" alt="ADS Grupo A" style="height:44px;width:44px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(108,99,255,0.5);"><span>ODA·<span style="color:var(--accent)">ADS</span></span></div>
   <ul class="nav-links">
-    <li><a href="#modulos">Módulos</a></li>
-    <li><a href="#roadmap-section">Roadmap</a></li>
-    <li><a href="#conceitos">Conceitos</a></li>
-    <li><a href="#flashcards">Flashcards</a></li>
-    <li><a href="#quiz">Quiz</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#referencias">ABNT</a></li>
+    <li><a href="#modulos" data-i18n="nav_modulos">Módulos</a></li>
+    <li><a href="#roadmap-section" data-i18n="nav_roadmap">Roadmap</a></li>
+    <li><a href="#conceitos" data-i18n="nav_conceitos">Conceitos</a></li>
+    <li><a href="#flashcards" data-i18n="nav_flashcards">Flashcards</a></li>
+    <li><a href="#quiz" data-i18n="nav_quiz">Quiz</a></li>
+    <li><a href="#faq" data-i18n="nav_faq">FAQ</a></li>
+    <li><a href="#sobre" data-i18n="nav_sobre">Sobre</a></li>
+    <li><a href="#referencias" data-i18n="nav_abnt">ABNT</a></li>
   </ul>
 
   <div class="nav-actions">
-    <button onclick="openModal('tutorial-modal')" title="Como usar" aria-label="Como usar o site" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(116,0,236,0.12);border:1px solid rgba(116,0,236,0.3);color:var(--accent,#7400ec);cursor:pointer;"><svg class="ic" aria-hidden="true" style="width:16px;height:16px;"><use href="#ic-help"/></svg></button>
+    <div class="oda-lang" role="group" aria-label="Idioma / Language"></div>
+    <button onclick="openModal('tutorial-modal')" title="Como usar" data-i18n-title="nav_help" aria-label="Como usar o site" data-i18n-aria="nav_help" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(116,0,236,0.12);border:1px solid rgba(116,0,236,0.3);color:var(--accent,#7400ec);cursor:pointer;"><svg class="ic" aria-hidden="true" style="width:16px;height:16px;"><use href="#ic-help"/></svg></button>
     <button id="btn-install-app" onclick="installApp()" title="Instalar como app" aria-label="Instalar como app" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#7400ec,#007bef);color:#fff;border:none;padding:0.5rem 0.9rem;border-radius:8px;font-size:0.78rem;font-weight:700;cursor:pointer;">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v13M8 11l4 4 4-4"/><path d="M20 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2"/></svg>
-      Instalar App
+      <span data-i18n="nav_install">Instalar App</span>
     </button>
     <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Alternar tema" aria-label="Alternar modo claro/escuro">
       <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -119,12 +120,12 @@
                     animation:spin-glow 6s linear infinite;">
       </div>
     </div>
-    <div class="hero-tag">Objeto de Aprendizagem Digital · Grupo A</div>
-    <h1>Análise e<br><em>Desenvolvimento</em><br>de Sistemas</h1>
-    <p class="hero-sub">Material interativo e gratuito para estudantes de ADS. Explore conceitos, aprenda com infográficos e teste seus conhecimentos.</p>
+    <div class="hero-tag" data-i18n="hero_tag">Objeto de Aprendizagem Digital · Grupo A</div>
+    <h1 data-i18n="hero_title">Análise e<br><em>Desenvolvimento</em><br>de Sistemas</h1>
+    <p class="hero-sub" data-i18n="hero_sub">Material interativo e gratuito para estudantes de ADS. Explore conceitos, aprenda com infográficos e teste seus conhecimentos.</p>
     <div class="hero-actions">
-      <a href="#modulos" class="btn btn-primary">▶ Começar agora</a>
-      <a href="#quiz" class="btn btn-ghost">⚡ Fazer o quiz</a>
+      <a href="#modulos" class="btn btn-primary" data-i18n="hero_cta1">▶ Começar agora</a>
+      <a href="#quiz" class="btn btn-ghost" data-i18n="hero_cta2">⚡ Fazer o quiz</a>
     </div>
   </div>
 </section>
@@ -134,22 +135,22 @@
   <div class="stat">
     <div class="stat-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg></div>
     <div class="stat-num" data-target="7" data-suffix="+">0+</div>
-    <div class="stat-label">Módulos</div>
+    <div class="stat-label" data-i18n="stat_modulos">Módulos</div>
   </div>
   <div class="stat">
     <div class="stat-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg></div>
     <div class="stat-num" data-target="15" data-suffix="+">0+</div>
-    <div class="stat-label">Conceitos-chave</div>
+    <div class="stat-label" data-i18n="stat_conceitos">Conceitos-chave</div>
   </div>
   <div class="stat">
     <div class="stat-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
     <div class="stat-num" data-target="34" data-suffix="+">0+</div>
-    <div class="stat-label">Questões no Quiz</div>
+    <div class="stat-label" data-i18n="stat_quiz">Questões no Quiz</div>
   </div>
   <div class="stat">
     <div class="stat-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div>
     <div class="stat-num" data-target="100" data-suffix="%">0%</div>
-    <div class="stat-label">Gratuito</div>
+    <div class="stat-label" data-i18n="stat_free">Gratuito</div>
   </div>
 </div>
 
@@ -171,102 +172,102 @@
 </div>
 
 <section id="modulos">
-  <div class="section-label">Conteúdo</div>
-  <h2>Módulos de<br>Aprendizagem</h2>
-  <p class="section-desc">Seis grandes áreas do curso de ADS, cada uma com os conceitos fundamentais organizados de forma clara e progressiva.</p>
+  <div class="section-label" data-i18n="sec_modulos_label">Conteúdo</div>
+  <h2 data-i18n="sec_modulos_title">Módulos de<br>Aprendizagem</h2>
+  <p class="section-desc" data-i18n="sec_modulos_desc">Seis grandes áreas do curso de ADS, cada uma com os conceitos fundamentais organizados de forma clara e progressiva.</p>
 
   <div class="modules-grid">
 
     <div class="module-card card-accent-purple reveal" onclick="openModal('mod-eng')">
-      <span class="progress-badge">✓ Visitado</span>
+      <span class="progress-badge" data-i18n="module_visited">✓ Visitado</span>
       <div class="module-icon icon-purple"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="3" width="6" height="6" rx="1"/><rect x="9" y="15" width="6" height="6" rx="1"/><line x1="6" y1="9" x2="6" y2="12"/><line x1="18" y1="9" x2="18" y2="12"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="12" y1="12" x2="12" y2="15"/></svg></div>
-      <div class="module-title">Engenharia de Software</div>
-      <div class="module-desc">Ciclo de vida do software, metodologias ágeis (Scrum, Kanban, XP), documentação e qualidade de software.</div>
+      <div class="module-title" data-i18n="mc_0_title">Engenharia de Software</div>
+      <div class="module-desc" data-i18n="mc_0_desc">Ciclo de vida do software, metodologias ágeis (Scrum, Kanban, XP), documentação e qualidade de software.</div>
       <div class="module-tags">
         <span class="tag tag-purple">Scrum</span>
         <span class="tag tag-purple">UML</span>
         <span class="tag tag-purple">Requisitos</span>
       </div>
-      <div class="open-hint">▶ Ver conteúdo</div>
+      <div class="open-hint" data-i18n="open_hint">▶ Ver conteúdo</div>
     </div>
 
     <div class="module-card card-accent-teal reveal" onclick="openModal('mod-bd')">
-      <span class="progress-badge">✓ Visitado</span>
+      <span class="progress-badge" data-i18n="module_visited">✓ Visitado</span>
       <div class="module-icon icon-teal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
-      <div class="module-title">Banco de Dados</div>
-      <div class="module-desc">Modelagem relacional, SQL, normalização, transações ACID, NoSQL e fundamentos de administração de BD.</div>
+      <div class="module-title" data-i18n="mc_1_title">Banco de Dados</div>
+      <div class="module-desc" data-i18n="mc_1_desc">Modelagem relacional, SQL, normalização, transações ACID, NoSQL e fundamentos de administração de BD.</div>
       <div class="module-tags">
         <span class="tag tag-teal">SQL</span>
         <span class="tag tag-teal">NoSQL</span>
         <span class="tag tag-teal">ER</span>
       </div>
-      <div class="open-hint">▶ Ver conteúdo</div>
+      <div class="open-hint" data-i18n="open_hint">▶ Ver conteúdo</div>
     </div>
 
     <div class="module-card card-accent-red reveal" onclick="openModal('mod-web')">
-      <span class="progress-badge">✓ Visitado</span>
+      <span class="progress-badge" data-i18n="module_visited">✓ Visitado</span>
       <div class="module-icon icon-red"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="12" y1="3" x2="12" y2="21" stroke-width="1.2" opacity="0.5"/></svg></div>
-      <div class="module-title">Programação Web</div>
-      <div class="module-desc">HTML, CSS, JavaScript, frameworks modernos (React, Vue), back-end com Node.js/Python e APIs REST.</div>
+      <div class="module-title" data-i18n="mc_2_title">Programação Web</div>
+      <div class="module-desc" data-i18n="mc_2_desc">HTML, CSS, JavaScript, frameworks modernos (React, Vue), back-end com Node.js/Python e APIs REST.</div>
       <div class="module-tags">
         <span class="tag tag-red">JavaScript</span>
         <span class="tag tag-red">React</span>
         <span class="tag tag-red">REST</span>
       </div>
-      <div class="open-hint">▶ Ver conteúdo</div>
+      <div class="open-hint" data-i18n="open_hint">▶ Ver conteúdo</div>
     </div>
 
     <div class="module-card card-accent-purple reveal" onclick="openModal('mod-redes')">
-      <span class="progress-badge">✓ Visitado</span>
+      <span class="progress-badge" data-i18n="module_visited">✓ Visitado</span>
       <div class="module-icon icon-yellow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-      <div class="module-title">Redes de Computadores</div>
-      <div class="module-desc">Modelo OSI/TCP-IP, protocolos de comunicação, endereçamento IP, roteamento, segurança e nuvem.</div>
+      <div class="module-title" data-i18n="mc_3_title">Redes de Computadores</div>
+      <div class="module-desc" data-i18n="mc_3_desc">Modelo OSI/TCP-IP, protocolos de comunicação, endereçamento IP, roteamento, segurança e nuvem.</div>
       <div class="module-tags">
         <span class="tag tag-yellow">TCP/IP</span>
         <span class="tag tag-yellow">HTTP</span>
         <span class="tag tag-yellow">Cloud</span>
       </div>
-      <div class="open-hint">▶ Ver conteúdo</div>
+      <div class="open-hint" data-i18n="open_hint">▶ Ver conteúdo</div>
     </div>
 
     <div class="module-card card-accent-teal reveal" onclick="openModal('mod-algo')">
-      <span class="progress-badge">✓ Visitado</span>
+      <span class="progress-badge" data-i18n="module_visited">✓ Visitado</span>
       <div class="module-icon icon-purple"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-      <div class="module-title">Algoritmos e Estruturas</div>
-      <div class="module-desc">Lógica de programação, complexidade algorítmica (Big-O), listas, árvores, grafos e algoritmos de ordenação.</div>
+      <div class="module-title" data-i18n="mc_4_title">Algoritmos e Estruturas</div>
+      <div class="module-desc" data-i18n="mc_4_desc">Lógica de programação, complexidade algorítmica (Big-O), listas, árvores, grafos e algoritmos de ordenação.</div>
       <div class="module-tags">
         <span class="tag tag-purple">Big-O</span>
         <span class="tag tag-purple">Grafos</span>
         <span class="tag tag-purple">Busca</span>
       </div>
-      <div class="open-hint">▶ Ver conteúdo</div>
+      <div class="open-hint" data-i18n="open_hint">▶ Ver conteúdo</div>
     </div>
 
     <div class="module-card card-accent-red reveal" onclick="openModal('mod-seg')">
-      <span class="progress-badge">✓ Visitado</span>
+      <span class="progress-badge" data-i18n="module_visited">✓ Visitado</span>
       <div class="module-icon icon-teal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10" stroke-width="1.8"/></svg></div>
-      <div class="module-title">Segurança da Informação</div>
-      <div class="module-desc">Criptografia, autenticação, controle de acesso, LGPD, OWASP Top 10 e boas práticas de segurança no desenvolvimento.</div>
+      <div class="module-title" data-i18n="mc_5_title">Segurança da Informação</div>
+      <div class="module-desc" data-i18n="mc_5_desc">Criptografia, autenticação, controle de acesso, LGPD, OWASP Top 10 e boas práticas de segurança no desenvolvimento.</div>
       <div class="module-tags">
         <span class="tag tag-teal">LGPD</span>
         <span class="tag tag-teal">OWASP</span>
         <span class="tag tag-teal">Criptografia</span>
       </div>
-      <div class="open-hint">▶ Ver conteúdo</div>
+      <div class="open-hint" data-i18n="open_hint">▶ Ver conteúdo</div>
     </div>
 
 
     <div class="module-card card-accent-yellow" onclick="openModal('mod-fund')">
-      <span class="progress-badge">✓ Visitado</span>
+      <span class="progress-badge" data-i18n="module_visited">✓ Visitado</span>
       <div class="module-icon icon-yellow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg></div>
-      <div class="module-title">Fundamentos de ADS</div>
-      <div class="module-desc">Introdução ao curso, lógica de programação, hardware e software, sistemas operacionais e mercado de TI.</div>
+      <div class="module-title" data-i18n="mc_6_title">Fundamentos de ADS</div>
+      <div class="module-desc" data-i18n="mc_6_desc">Introdução ao curso, lógica de programação, hardware e software, sistemas operacionais e mercado de TI.</div>
       <div class="module-tags">
         <span class="tag tag-yellow">Lógica</span>
         <span class="tag tag-yellow">Hardware</span>
         <span class="tag tag-yellow">SO</span>
       </div>
-      <div class="open-hint">▸ Ver conteúdo</div>
+      <div class="open-hint" data-i18n="open_hint_fund">▸ Ver conteúdo</div>
     </div>
   </div>
 </section>
@@ -274,16 +275,16 @@
 <!-- ROADMAP / INFOGRÁFICO -->
 <div id="infografico">
   <div class="inner" id="roadmap-section">
-    <div class="section-label">Infográfico</div>
-    <h2>Roadmap do<br>Desenvolvedor ADS</h2>
-    <p class="section-desc">A jornada de aprendizado de um estudante de ADS até o mercado de trabalho, passo a passo.</p>
+    <div class="section-label" data-i18n="sec_roadmap_label">Infográfico</div>
+    <h2 data-i18n="sec_roadmap_title">Roadmap do<br>Desenvolvedor ADS</h2>
+    <p class="section-desc" data-i18n="sec_roadmap_desc">A jornada de aprendizado de um estudante de ADS até o mercado de trabalho, passo a passo.</p>
 
     <div class="roadmap">
       <div class="roadmap-line"></div>
 
       <div class="roadmap-item">
         <div class="roadmap-content">
-          <h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg> Fundamentos</h3>
+          <h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg> <span data-rm-text>Fundamentos</span></h3>
           <p>Lógica de programação, algoritmos e estruturas de dados. A base de tudo. Sem ela, nada funciona.</p>
         </div>
         <div class="roadmap-dot dot-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" style="pointer-events:none;"><circle cx="12" cy="12" r="10" fill="#7400ec"/><circle cx="12" cy="12" r="5" fill="white" opacity="0.85"/></svg></div>
@@ -294,14 +295,14 @@
         <div class="roadmap-empty"></div>
         <div class="roadmap-dot dot-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" style="pointer-events:none;"><circle cx="12" cy="12" r="10" fill="#00a0e0"/><circle cx="12" cy="12" r="5" fill="white" opacity="0.85"/></svg></div>
         <div class="roadmap-content">
-          <h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> Linguagens &amp; Web</h3>
+          <h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> <span data-rm-text>Linguagens &amp; Web</span></h3>
           <p>Python, JavaScript, HTML/CSS. Construindo interfaces e lógica de servidor, da teoria à prática.</p>
         </div>
       </div>
 
       <div class="roadmap-item">
         <div class="roadmap-content">
-          <h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg> Banco de Dados</h3>
+          <h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg> <span data-rm-text>Banco de Dados</span></h3>
           <p>Modelagem, SQL, integração com aplicações. Dados são o coração dos sistemas modernos.</p>
         </div>
         <div class="roadmap-dot dot-3"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" style="pointer-events:none;"><circle cx="12" cy="12" r="10" fill="#ff4466"/><circle cx="12" cy="12" r="5" fill="white" opacity="0.85"/></svg></div>
@@ -312,14 +313,14 @@
         <div class="roadmap-empty"></div>
         <div class="roadmap-dot dot-4"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" style="pointer-events:none;"><circle cx="12" cy="12" r="10" fill="#f0a500"/><circle cx="12" cy="12" r="5" fill="white" opacity="0.85"/></svg></div>
         <div class="roadmap-content">
-          <h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="3" width="6" height="6" rx="1"/><rect x="9" y="15" width="6" height="6" rx="1"/><line x1="6" y1="9" x2="6" y2="12"/><line x1="18" y1="9" x2="18" y2="12"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="12" y1="12" x2="12" y2="15"/></svg> Engenharia &amp; Processos</h3>
+          <h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="3" width="6" height="6" rx="1"/><rect x="9" y="15" width="6" height="6" rx="1"/><line x1="6" y1="9" x2="6" y2="12"/><line x1="18" y1="9" x2="18" y2="12"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="12" y1="12" x2="12" y2="15"/></svg> <span data-rm-text>Engenharia &amp; Processos</span></h3>
           <p>Scrum, Git, documentação, trabalho em equipe. O mercado exige profissionais que saibam colaborar.</p>
         </div>
       </div>
 
       <div class="roadmap-item">
         <div class="roadmap-content">
-          <h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 22-7z"/></svg> Mercado de Trabalho</h3>
+          <h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 22-7z"/></svg> <span data-rm-text>Mercado de Trabalho</span></h3>
           <p>Portfólio no GitHub, projetos reais, estágio e primeiros empregos. O início da carreira!</p>
         </div>
         <div class="roadmap-dot dot-5"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" style="pointer-events:none;"><circle cx="12" cy="12" r="10" fill="#7400ec"/><circle cx="12" cy="12" r="5" fill="white" opacity="0.85"/></svg></div>
@@ -332,9 +333,9 @@
 
 <!-- CONCEITOS-CHAVE -->
 <section id="conceitos">
-  <div class="section-label">Glossário</div>
-  <h2>Conceitos Essenciais</h2>
-  <p class="section-desc">Definições rápidas dos termos mais cobrados nas disciplinas de ADS.</p>
+  <div class="section-label" data-i18n="sec_conceitos_label">Glossário</div>
+  <h2 data-i18n="sec_conceitos_title">Conceitos Essenciais</h2>
+  <p class="section-desc" data-i18n="sec_conceitos_desc">Definições rápidas dos termos mais cobrados nas disciplinas de ADS.</p>
 
   <div class="concepts-grid">
     <div class="concept-card reveal">
@@ -432,8 +433,8 @@
 <!-- FLASHCARDS -->
 <section id="flashcards">
   <div class="section-label">Memorização</div>
-  <h2>Flashcards</h2>
-  <p class="section-desc">Clique nos cards para revelar a definição. Ótimo para revisar antes de provas!</p>
+  <h2 data-i18n="sec_flashcards_title">Flashcards</h2>
+  <p class="section-desc" data-i18n="sec_flashcards_desc">Clique nos cards para revelar a definição. Ótimo para revisar antes de provas!</p>
 
   <div class="fc-grid" id="fc-grid">
 
@@ -596,14 +597,14 @@
   </div>
 
   <p class="fc-progress-text" id="fc-progress">0 de 12 cards revelados</p>
-  <button class="fc-reset-btn" onclick="resetCards()">↺ Resetar cards</button>
+  <button class="fc-reset-btn" onclick="resetCards()" data-i18n="fc_reset">↺ Resetar cards</button>
 </section>
 
 <!-- FAQ -->
 <section id="faq" style="max-width:800px;">
-  <div class="section-label">Dúvidas frequentes</div>
-  <h2>FAQ</h2>
-  <p class="section-desc">Perguntas comuns sobre o curso de ADS e a área de tecnologia.</p>
+  <div class="section-label" data-i18n="sec_faq_label">Dúvidas frequentes</div>
+  <h2 data-i18n="sec_faq_title">FAQ</h2>
+  <p class="section-desc" data-i18n="sec_faq_desc">Perguntas comuns sobre o curso de ADS e a área de tecnologia.</p>
 
   <div id="accordion" style="margin-top:2rem;">
 
@@ -704,32 +705,32 @@
 
 <!-- SOBRE O GRUPO -->
 <section id="sobre" style="max-width:900px;margin:0 auto;padding:4rem 1.5rem;">
-  <div class="section-label">Grupo A</div>
-  <h2>Sobre os Desenvolvedores</h2>
-  <p class="section-desc">Estudantes do 4º semestre de ADS na UNIGRANDE, de diferentes polos: Polo Amaralina (Bom Jesus da Lapa/BA), Polo Centro (Parnaíba/PI), Polo Cambolo (Porto Seguro/BA) e Polo Vitória da Conquista (BA). Juntos desenvolveram este ODA como Projeto de Extensão.</p>
+  <div class="section-label" data-i18n="sec_sobre_label">Grupo A</div>
+  <h2 data-i18n="sec_sobre_title">Sobre os Desenvolvedores</h2>
+  <p class="section-desc" data-i18n="sec_sobre_desc">Estudantes do 4º semestre de ADS na UNIGRANDE, de diferentes polos: Polo Amaralina (Bom Jesus da Lapa/BA), Polo Centro (Parnaíba/PI), Polo Cambolo (Porto Seguro/BA) e Polo Vitória da Conquista (BA). Juntos desenvolveram este ODA como Projeto de Extensão.</p>
 
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-top:2.5rem;">
 
     <div class="about-card" style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.75rem;text-align:center;position:relative;overflow:hidden;">
       <div style="width:64px;height:64px;border-radius:50%;margin:0 auto 0.75rem;overflow:hidden;border:2px solid #7400ec;box-shadow:0 0 16px #7400ec66;"><img src="avatar-1.jpg" alt="Set Hudson Leite Costa" style="width:100%;height:100%;object-fit:cover;display:block;"/></div>
       <div style="font-family:var(--font-display);font-weight:700;font-size:0.82rem;margin-bottom:0.2rem;">Set Hudson Leite Costa</div>
-      <div style="font-family:var(--font-mono);font-size:0.62rem;color:var(--accent2);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Desenvolvedor Principal</div>
-      <div style="font-size:0.82rem;color:var(--muted);line-height:1.6;">Cursando Análise e Desenvolvimento de Sistemas na UNIGRANDE. +700h certificados em Dev Web, Python, Cibersegurança e IA. Certificado Analista de Cibersegurança Júnior pela Cisco (Abr/2026). Especialista em HTML5, CSS, JavaScript, SQL e Power BI.</div>
+      <div style="font-family:var(--font-mono);font-size:0.62rem;color:var(--accent2);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;" data-i18n="team_0_role">Desenvolvedor Principal</div>
+      <div style="font-size:0.82rem;color:var(--muted);line-height:1.6;"><span data-i18n="team_0_bio">Cursando Análise e Desenvolvimento de Sistemas na UNIGRANDE. +700h certificados em Dev Web, Python, Cibersegurança e IA. Certificado Analista de Cibersegurança Júnior pela Cisco (Abr/2026). Especialista em HTML5, CSS, JavaScript, SQL e Power BI.</span></div>
       <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:3px;margin-top:0.5rem;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;vertical-align:middle;margin-right:3px;opacity:0.7;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Polo Amaralina, Bom Jesus da Lapa, BA</div>
     </div>
 
     <div class="about-card" style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.75rem;text-align:center;position:relative;overflow:hidden;">
       <div style="width:64px;height:64px;border-radius:50%;margin:0 auto 0.75rem;overflow:hidden;border:2px solid #00a0e0;box-shadow:0 0 16px #00a0e066;"><img src="avatar-2.jpg" alt="George Alexandre Galeno" style="width:100%;height:100%;object-fit:cover;display:block;"/></div>
       <div style="font-family:var(--font-display);font-weight:700;font-size:0.82rem;margin-bottom:0.2rem;">George Alexandre Galeno</div>
-      <div style="font-family:var(--font-mono);font-size:0.62rem;color:var(--accent4);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Conteúdo &amp; Pesquisa</div>
-      <div style="font-size:0.82rem;color:var(--muted);line-height:1.6;">Levantamento bibliográfico, curadoria de conteúdo e revisão técnica dos módulos.<br><span style="font-family:var(--font-mono);font-size:0.58rem;color:var(--muted);">Polo Centro, Parnaíba, PI</span></div>
+      <div style="font-family:var(--font-mono);font-size:0.62rem;color:var(--accent4);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;" data-i18n="team_1_role">Conteúdo &amp; Pesquisa</div>
+      <div style="font-size:0.82rem;color:var(--muted);line-height:1.6;"><span data-i18n="team_1_bio">Levantamento bibliográfico, curadoria de conteúdo e revisão técnica dos módulos.</span><br><span style="font-family:var(--font-mono);font-size:0.58rem;color:var(--muted);">Polo Centro, Parnaíba, PI</span></div>
     </div>
 
     <div class="about-card" style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.75rem;text-align:center;position:relative;overflow:hidden;">
       <div style="width:64px;height:64px;border-radius:50%;margin:0 auto 0.75rem;overflow:hidden;border:2px solid #ec4899;box-shadow:0 0 16px #ec489966;"><img src="avatar-3.jpg" alt="Joana D'Arc" style="width:100%;height:100%;object-fit:cover;display:block;"/></div>
       <div style="font-family:var(--font-display);font-weight:700;font-size:0.82rem;margin-bottom:0.2rem;">Joana D'Arc</div>
-      <div style="font-family:var(--font-mono);font-size:0.62rem;color:#ec4899;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Documentação &amp; QA</div>
-      <div style="font-size:0.82rem;color:var(--muted);line-height:1.6;">Documentação do projeto, testes de usabilidade e garantia de qualidade do conteúdo.</div>
+      <div style="font-family:var(--font-mono);font-size:0.62rem;color:#ec4899;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;" data-i18n="team_2_role">Documentação &amp; QA</div>
+      <div style="font-size:0.82rem;color:var(--muted);line-height:1.6;" data-i18n="team_2_bio">Documentação do projeto, testes de usabilidade e garantia de qualidade do conteúdo.</div>
       <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:3px;margin-top:0.5rem;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;vertical-align:middle;margin-right:3px;opacity:0.7;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Polo Cambolo, Porto Seguro, BA</div>
     </div>
 
@@ -737,8 +738,8 @@
     <div class="about-card" style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.25rem;text-align:center;position:relative;overflow:hidden;">
       <div style="width:64px;height:64px;border-radius:50%;margin:0 auto 0.75rem;overflow:hidden;border:2px solid #8b5cf6;box-shadow:0 0 16px #8b5cf666;"><img src="avatar-4.jpg" alt="Gabrielly Moitinho Viana Souza" style="width:100%;height:100%;object-fit:cover;display:block;"/></div>
       <div style="font-family:var(--font-display);font-weight:700;font-size:0.82rem;margin-bottom:0.2rem;">Gabrielly Moitinho Viana Souza</div>
-      <div style="font-family:var(--font-mono);font-size:0.6rem;color:#8b5cf6;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Desenvolvedora</div>
-      <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">Cursando Análise e Desenvolvimento de Sistemas. Desenvolvedora Front-End com experiência em HTML5, CSS3 e JavaScript. Especialista em dashboards com Power BI e Power Query.</div>
+      <div style="font-family:var(--font-mono);font-size:0.6rem;color:#8b5cf6;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;" data-i18n="team_3_role">Desenvolvedora</div>
+      <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;" data-i18n="team_3_bio">Cursando Análise e Desenvolvimento de Sistemas. Desenvolvedora Front-End com experiência em HTML5, CSS3 e JavaScript. Especialista em dashboards com Power BI e Power Query.</div>
       <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:3px;margin-top:0.5rem;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;vertical-align:middle;margin-right:3px;opacity:0.7;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Polo Vitória da Conquista, BA</div>
     </div>
 
@@ -762,25 +763,25 @@
 
         <div style="background:rgba(116,0,236,0.06);border:1px solid rgba(116,0,236,0.2);border-radius:10px;padding:0.85rem;text-align:left;">
           <div style="font-family:var(--font-display);font-weight:700;font-size:0.82rem;color:#ffffff;margin-bottom:0.15rem;">Set Hudson Leite Costa</div>
-          <div style="font-family:var(--font-mono);font-size:0.6rem;color:#b088ff;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.3rem;">Desenvolvedor Principal</div>
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:#b088ff;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.3rem;" data-i18n="team_0_role">Desenvolvedor Principal</div>
           <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--muted);display:flex;align-items:center;gap:3px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Polo Amaralina, Bom Jesus da Lapa, BA</div>
         </div>
 
         <div style="background:rgba(0,160,224,0.06);border:1px solid rgba(0,160,224,0.2);border-radius:10px;padding:0.85rem;text-align:left;">
           <div style="font-family:var(--font-display);font-weight:700;font-size:0.82rem;color:#ffffff;margin-bottom:0.15rem;">George Alexandre Galeno</div>
-          <div style="font-family:var(--font-mono);font-size:0.6rem;color:#00c8f0;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.3rem;">Conteúdo &amp; Pesquisa</div>
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:#00c8f0;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.3rem;" data-i18n="team_1_role">Conteúdo &amp; Pesquisa</div>
           <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--muted);display:flex;align-items:center;gap:3px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Polo Centro, Parnaíba, PI</div>
         </div>
 
         <div style="background:rgba(236,72,153,0.06);border:1px solid rgba(236,72,153,0.2);border-radius:10px;padding:0.85rem;text-align:left;">
           <div style="font-family:var(--font-display);font-weight:700;font-size:0.82rem;color:#ffffff;margin-bottom:0.15rem;">Joana D'Arc</div>
-          <div style="font-family:var(--font-mono);font-size:0.6rem;color:#ec4899;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.3rem;">Documentação &amp; QA</div>
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:#ec4899;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.3rem;" data-i18n="team_2_role">Documentação &amp; QA</div>
           <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--muted);display:flex;align-items:center;gap:3px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Polo Cambolo, Porto Seguro, BA</div>
         </div>
 
         <div style="background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.2);border-radius:10px;padding:0.85rem;text-align:left;">
           <div style="font-family:var(--font-display);font-weight:700;font-size:0.82rem;color:#ffffff;margin-bottom:0.15rem;">Gabrielly Moitinho Viana Souza</div>
-          <div style="font-family:var(--font-mono);font-size:0.6rem;color:#8b5cf6;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.3rem;">Desenvolvedora</div>
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:#8b5cf6;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.3rem;" data-i18n="team_3_role">Desenvolvedora</div>
           <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--muted);display:flex;align-items:center;gap:3px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Polo Vitória da Conquista, BA</div>
         </div>
 
@@ -793,9 +794,9 @@
 
 <!-- REFERÊNCIAS ABNT -->
 <section id="referencias" style="max-width:900px;margin:0 auto;padding:4rem 1.5rem;">
-  <div class="section-label">Acadêmico</div>
-  <h2>Referências Bibliográficas</h2>
-  <p class="section-desc">Fontes utilizadas no desenvolvimento deste Objeto de Aprendizagem Digital, conforme normas ABNT.</p>
+  <div class="section-label" data-i18n="sec_referencias_label">Acadêmico</div>
+  <h2 data-i18n="sec_referencias_title">Referências Bibliográficas</h2>
+  <p class="section-desc" data-i18n="sec_referencias_desc">Fontes utilizadas no desenvolvimento deste Objeto de Aprendizagem Digital, conforme normas ABNT.</p>
 
   <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-top:2rem;">
     <ul style="list-style:none;display:flex;flex-direction:column;gap:1.25rem;">
@@ -834,8 +835,8 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo" style="display:flex;align-items:center;justify-content:center;gap:0.75rem;"><img src="logo.jpg" alt="ADS Grupo A" style="height:52px;width:52px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(108,99,255,0.5);">ODA·<span>ADS</span></div>
-  <p class="footer-text">Objeto de Aprendizagem Digital · Análise e Desenvolvimento de Sistemas · Uso educacional gratuito</p>
-  <p style="font-family:var(--font-mono);font-size:0.68rem;color:var(--muted);margin-top:0.5rem;letter-spacing:0.05em;">
+  <p class="footer-text" data-i18n="footer_text">Objeto de Aprendizagem Digital · Análise e Desenvolvimento de Sistemas · Uso educacional gratuito</p>
+  <p style="font-family:var(--font-mono);font-size:0.68rem;color:var(--muted);margin-top:0.5rem;letter-spacing:0.05em;" data-i18n="footer_meta">
     Centro Universitário UNIGRANDE · Curso de ADS · 4º Semestre · 2026
   </p>
 </footer>
@@ -1246,26 +1247,26 @@ app.<span class="fn">listen</span>(<span class="nm">3000</span>);</pre></div>
       <div class="modal-header-left">
         <div class="modal-header-icon icon-yellow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 1 1 5.83 1c0 2-3 2-3 4"/><line x1="12" y1="17" x2="12" y2="17.01"/></svg></div>
         <div>
-          <div class="modal-tag tag-yellow">Guia rápido</div>
-          <h3 class="modal-title">Como usar o ODA·ADS</h3>
+          <div class="modal-tag tag-yellow" data-i18n="tutorial_tag">Guia rápido</div>
+          <h3 class="modal-title" data-i18n="tutorial_title">Como usar o ODA·ADS</h3>
         </div>
       </div>
       <button class="modal-close" onclick="closeModal('tutorial-modal')">&#x2715;</button>
     </div>
     <div class="modal-body">
-      <p class="modal-intro">Um roteiro simples pra aproveitar melhor o material: siga a ordem abaixo, ou pule direto pro que precisar.</p>
+      <p class="modal-intro" data-i18n="tutorial_intro">Um roteiro simples pra aproveitar melhor o material: siga a ordem abaixo, ou pule direto pro que precisar.</p>
       <div class="modal-section">
         <div class="topics-grid" style="grid-template-columns:1fr;">
-          <div class="topic-item"><div class="topic-bullet"></div><div class="topic-text"><strong>1. Módulos</strong>7 áreas do curso de ADS, cada uma com tópicos e exemplo prático.</div></div>
-          <div class="topic-item"><div class="topic-bullet"></div><div class="topic-text"><strong>2. Roadmap</strong>A trilha de aprendizado do início ao mercado de trabalho.</div></div>
-          <div class="topic-item"><div class="topic-bullet"></div><div class="topic-text"><strong>3. Flashcards</strong>Vire os cards pra testar se lembra dos conceitos-chave.</div></div>
-          <div class="topic-item"><div class="topic-bullet"></div><div class="topic-text"><strong>4. Quiz</strong>34 questões com timer e feedback na hora. Atalhos: teclas 1-4 pra responder, Enter pra avançar.</div></div>
-          <div class="topic-item"><div class="topic-bullet"></div><div class="topic-text"><strong>5. Certificado</strong>Acertando 70% ou mais, gere o seu, com nome e código de validação.</div></div>
-          <div class="topic-item"><div class="topic-bullet"></div><div class="topic-text"><strong>6. Instalar App</strong>Toque no botão no topo do site pra usar o ODA·ADS como aplicativo, com acesso offline.</div></div>
+          <div class="topic-item"><div class="topic-bullet"></div><div class="topic-text"><strong data-i18n="tutorial_step1_t">1. Módulos</strong><span data-i18n="tutorial_step1_d">7 áreas do curso de ADS, cada uma com tópicos e exemplo prático.</span></div></div>
+          <div class="topic-item"><div class="topic-bullet"></div><div class="topic-text"><strong data-i18n="tutorial_step2_t">2. Roadmap</strong><span data-i18n="tutorial_step2_d">A trilha de aprendizado do início ao mercado de trabalho.</span></div></div>
+          <div class="topic-item"><div class="topic-bullet"></div><div class="topic-text"><strong data-i18n="tutorial_step3_t">3. Flashcards</strong><span data-i18n="tutorial_step3_d">Vire os cards pra testar se lembra dos conceitos-chave.</span></div></div>
+          <div class="topic-item"><div class="topic-bullet"></div><div class="topic-text"><strong data-i18n="tutorial_step4_t">4. Quiz</strong><span data-i18n="tutorial_step4_d">34 questões com timer e feedback na hora. Atalhos: teclas 1-4 pra responder, Enter pra avançar.</span></div></div>
+          <div class="topic-item"><div class="topic-bullet"></div><div class="topic-text"><strong data-i18n="tutorial_step5_t">5. Certificado</strong><span data-i18n="tutorial_step5_d">Acertando 70% ou mais, gere o seu, com nome e código de validação.</span></div></div>
+          <div class="topic-item"><div class="topic-bullet"></div><div class="topic-text"><strong data-i18n="tutorial_step6_t">6. Instalar App</strong><span data-i18n="tutorial_step6_d">Toque no botão no topo do site pra usar o ODA·ADS como aplicativo, com acesso offline.</span></div></div>
         </div>
       </div>
       <div class="modal-section">
-        <button class="btn btn-primary" style="width:100%;" onclick="closeModal('tutorial-modal')">Entendi, vamos começar</button>
+        <button class="btn btn-primary" style="width:100%;" onclick="closeModal('tutorial-modal')" data-i18n="tutorial_btn">Entendi, vamos começar</button>
       </div>
     </div>
   </div>
@@ -1281,57 +1282,55 @@ app.<span class="fn">listen</span>(<span class="nm">3000</span>);</pre></div>
       <div style="font-size:2.5rem;margin-bottom:1rem;">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="gold" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H3.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h2.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
       </div>
-      <h3 style="color:var(--white);font-size:1.1rem;margin-bottom:0.4rem;">Emitir Certificado</h3>
-      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1.5rem;">Digite seu nome completo para gerar o certificado digital com código de validação único.</p>
-      <input type="text" id="cert-name-input" placeholder="Seu nome completo" maxlength="80"
+      <h3 style="color:var(--white);font-size:1.1rem;margin-bottom:0.4rem;" data-i18n="cert_title">Emitir Certificado</h3>
+      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1.5rem;" data-i18n="cert_desc">Digite seu nome completo para gerar o certificado digital com código de validação único.</p>
+      <input type="text" id="cert-name-input" placeholder="Seu nome completo" data-i18n-placeholder="cert_placeholder" maxlength="80"
         style="width:100%;max-width:380px;padding:0.75rem 1rem;border:2px solid rgba(116,0,236,0.3);border-radius:10px;font-size:0.95rem;background:rgba(116,0,236,0.05);color:var(--white);outline:none;font-family:var(--font-body);display:block;margin:0 auto 1rem;"
         onkeydown="if(event.key==='Enter')generateCert()"
       />
       <button onclick="generateCert()" style="background:linear-gradient(135deg,#7400ec,#007bef);color:#fff;border:none;padding:0.7rem 2rem;border-radius:10px;font-size:0.9rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:0.5rem;">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        Gerar Certificado
+        <span data-i18n="cert_generate">Gerar Certificado</span>
       </button>
     </div>
 
     <!-- TELA 2: Certificado gerado -->
     <div id="cert-generated-screen" style="display:none;">
       <div class="cert-seal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="gold" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H3.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h2.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg></div>
-      <div class="cert-title">Certificado de Conclusão</div>
-      <div class="cert-heading">Parabéns!</div>
-      <div class="cert-heading" style="font-size:1rem;color:var(--muted);font-weight:400;margin-bottom:1rem;">você concluiu o ODA com excelência</div>
-      <div class="cert-issued-to">Certificamos que</div>
+      <div class="cert-title" data-i18n="cert_doc_title">Certificado de Conclusão</div>
+      <div class="cert-heading" data-i18n="cert_congrats">Parabéns!</div>
+      <div class="cert-heading" style="font-size:1rem;color:var(--muted);font-weight:400;margin-bottom:1rem;" data-i18n="cert_excellence">você concluiu o ODA com excelência</div>
+      <div class="cert-issued-to" data-i18n="cert_certify">Certificamos que</div>
       <div class="cert-name" id="cert-name-display">-</div>
       <div class="cert-body">
-        demonstrou domínio dos conteúdos do
-        <strong>Objeto de Aprendizagem Digital · Análise e Desenvolvimento de Sistemas</strong>,
-        abrangendo Engenharia de Software, Banco de Dados, Programação Web,
-        Redes de Computadores, Algoritmos e Segurança da Informação.
+        <span data-i18n="cert_body1">demonstrou domínio dos conteúdos do</span>
+        <strong data-i18n="hero_tag_full">Objeto de Aprendizagem Digital · Análise e Desenvolvimento de Sistemas</strong><span data-i18n="cert_body2">, abrangendo Engenharia de Software, Banco de Dados, Programação Web, Redes de Computadores, Algoritmos e Segurança da Informação.</span>
       </div>
       <div class="cert-score-box">
         <div>
-          <div class="cert-score-label">Nota obtida no Quiz</div>
+          <div class="cert-score-label" data-i18n="cert_score_label">Nota obtida no Quiz</div>
           <div class="cert-score-value" id="cert-score-display">- / -</div>
         </div>
       </div>
       <div style="margin:0.75rem auto;max-width:400px;background:rgba(116,0,236,0.08);border:1px solid rgba(116,0,236,0.25);border-radius:8px;padding:0.5rem 1rem;font-family:monospace;font-size:0.65rem;color:#b088ff;letter-spacing:0.05em;">
-        Código de Validação: <span id="cert-code-display" style="font-weight:700;color:#7400ec;">-</span>
+        <span data-i18n="cert_validation">Código de Validação:</span> <span id="cert-code-display" style="font-weight:700;color:#7400ec;">-</span>
       </div>
       <hr class="cert-divider">
       <div class="cert-meta">
-        Instituição: <span>Centro Universitário UNIGRANDE</span><br>
-        Curso: <span>Análise e Desenvolvimento de Sistemas, 4º Semestre</span><br>
-        Grupo: <span>Grupo A, Projeto de Extensão</span><br>
-        Data: <span id="cert-date"></span>
+        <span data-i18n="cert_institution">Instituição:</span> <span>Centro Universitário UNIGRANDE</span><br>
+        <span data-i18n="cert_course">Curso:</span> <span>Análise e Desenvolvimento de Sistemas, 4º Semestre</span><br>
+        <span data-i18n="cert_group">Grupo:</span> <span>Grupo A, Projeto de Extensão</span><br>
+        <span data-i18n="cert_date">Data:</span> <span id="cert-date"></span>
       </div>
       <div class="cert-actions">
-        <button class="btn btn-ghost" onclick="closeCert()">Fechar</button>
+        <button class="btn btn-ghost" onclick="closeCert()" data-i18n="cert_close">Fechar</button>
         <button class="btn btn-outline" onclick="copiarCodigo()" style="font-size:0.78rem;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          Copiar código
+          <span data-i18n="cert_copy">Copiar código</span>
         </button>
         <button class="btn btn-primary" onclick="window.print()">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-          Imprimir / PDF
+          <span data-i18n="cert_print">Imprimir / PDF</span>
         </button>
       </div>
     </div>
@@ -1350,6 +1349,8 @@ app.<span class="fn">listen</span>(<span class="nm">3000</span>);</pre></div>
 
 
 <script src="script.js"></script>
+<script src="i18n.js"></script>
+<script src="i18n-apply.js"></script>
 
 </body>
 </html>

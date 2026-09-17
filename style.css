@@ -83,6 +83,17 @@
 
   .nav-links a:hover { color: var(--white); background: var(--border); }
 
+  .oda-lang { display: flex; gap: 3px; }
+  .oda-lang-btn {
+    width: 26px; height: 20px; padding: 0; border-radius: 3px; cursor: pointer;
+    background: none; border: 1px solid transparent; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0.5; transition: opacity .2s ease, border-color .2s ease;
+  }
+  .oda-lang-btn svg { width: 100%; height: 100%; display: block; }
+  .oda-lang-btn:hover { opacity: 0.85; }
+  .oda-lang-btn[aria-pressed="true"] { opacity: 1; border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+
   /* ── HERO ── */
   #hero {
     min-height: 100vh;
@@ -852,6 +863,7 @@
     .btn { font-size: 0.85rem; padding: 0.75rem 1.25rem; }
     nav { padding: 0.75rem 0.85rem; }
     .nav-logo { font-size: 0.95rem; }
+    .oda-lang-btn { width: 20px; height: 16px; }
   }
 
   /* ── SOBRE O GRUPO ── */

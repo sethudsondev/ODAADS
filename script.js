@@ -97,18 +97,31 @@ let current = 0;
 let score = 0;
 let answered = false;
 
+const ODA_QUIZ_COUNTER = { en: (n,t) => `Question ${n} of ${t}`, es: (n,t) => `Pregunta ${n} de ${t}` };
+const ODA_SCORE_LIVE = {
+  en: (s) => `✦ ${s} correct`,
+  es: (s) => `✦ ${s} correcta${s !== 1 ? 's' : ''}`,
+};
+function odaLang() { return (typeof window.ODA_lang !== 'undefined' && window.ODA_lang.current) ? window.ODA_lang.current() : 'pt'; }
+function odaCat(cat) {
+  const lang = odaLang();
+  if (lang === 'pt' || typeof ODA_CATS === 'undefined' || !ODA_CATS[lang]) return cat;
+  return ODA_CATS[lang][cat] || cat;
+}
+
 function renderQuestion() {
   const total = questions.length;
   const q = questions[current];
   const num = String(current+1).padStart(2,'0');
+  const lang = odaLang();
   document.getElementById('quiz-num').textContent = `${num} / ${total}`;
-  document.getElementById('quiz-counter').textContent = `Questão ${current+1} de ${total}`;
+  document.getElementById('quiz-counter').textContent = lang === 'pt' ? `Questão ${current+1} de ${total}` : ODA_QUIZ_COUNTER[lang](current+1, total);
   document.getElementById('quiz-bar').style.width = `${((current+1)/total)*100}%`;
   // Mostrar categoria da questão
   const catEl = document.getElementById('quiz-category');
-  if (catEl && q.cat) catEl.textContent = q.cat;
+  if (catEl && q.cat) catEl.textContent = odaCat(q.cat);
   document.getElementById('quiz-q').textContent = q.q;
-  document.getElementById('quiz-score-live').textContent = `✦ ${score} acerto${score !== 1 ? 's' : ''}`;
+  document.getElementById('quiz-score-live').textContent = lang === 'pt' ? `✦ ${score} acerto${score !== 1 ? 's' : ''}` : ODA_SCORE_LIVE[lang](score);
   const fb = document.getElementById('quiz-fb');
   fb.className = 'quiz-feedback';
   fb.textContent = '';
@@ -146,7 +159,8 @@ function selectOption(idx) {
     fb.className = 'quiz-feedback wrong-fb show';
     fb.textContent = '❌ ' + q.fb;
   }
-  document.getElementById('quiz-score-live').textContent = `✦ ${score} acerto${score !== 1 ? 's' : ''}`;
+  const _lang = odaLang();
+  document.getElementById('quiz-score-live').textContent = _lang === 'pt' ? `✦ ${score} acerto${score !== 1 ? 's' : ''}` : ODA_SCORE_LIVE[_lang](score);
   document.getElementById('quiz-next').style.display = 'inline-flex';
 }
 
@@ -169,10 +183,14 @@ function showResult() {
   document.getElementById('quiz-total-display').textContent = questions.length;
   const pct = score / questions.length;
   const emoji = pct >= 0.9 ? '★★★' : pct >= 0.7 ? '★★' : pct >= 0.5 ? '★' : '○';
-  const msg = pct >= 0.9 ? 'Excelente! Você domina os conceitos de ADS!' :
-              pct >= 0.7 ? 'Muito bom! Continue estudando para chegar à perfeição.' :
-              pct >= 0.5 ? 'Bom começo! Revise os módulos e tente novamente.' :
-              'Não desanime! Leia os módulos e tente de novo. Você chega lá!';
+  const _lang2 = odaLang();
+  const _msgs = (_lang2 !== 'pt' && typeof ODA_QUIZ_RESULT_MSG !== 'undefined') ? ODA_QUIZ_RESULT_MSG[_lang2] : null;
+  const msg = _msgs
+    ? (pct >= 0.9 ? _msgs[0] : pct >= 0.7 ? _msgs[1] : pct >= 0.5 ? _msgs[2] : _msgs[3])
+    : (pct >= 0.9 ? 'Excelente! Você domina os conceitos de ADS!' :
+       pct >= 0.7 ? 'Muito bom! Continue estudando para chegar à perfeição.' :
+       pct >= 0.5 ? 'Bom começo! Revise os módulos e tente novamente.' :
+       'Não desanime! Leia os módulos e tente de novo. Você chega lá!');
   document.getElementById('result-emoji').textContent = emoji;
   document.getElementById('result-msg').textContent = msg;
   if (score >= Math.round(questions.length * 0.7)) {
@@ -751,9 +769,14 @@ function generateCert() {
 
   // Data
   var d = new Date();
-  var months = ['janeiro','fevereiro','março','abril','maio','junho',
-                'julho','agosto','setembro','outubro','novembro','dezembro'];
-  var dateStr = d.getDate() + ' de ' + months[d.getMonth()] + ' de ' + d.getFullYear();
+  var _certLang = odaLang();
+  var months = (_certLang !== 'pt' && typeof ODA_MONTHS !== 'undefined') ? ODA_MONTHS[_certLang] :
+    ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+  var dateStr = _certLang === 'en'
+    ? (months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear())
+    : _certLang === 'es'
+    ? (d.getDate() + ' de ' + months[d.getMonth()] + ' de ' + d.getFullYear())
+    : (d.getDate() + ' de ' + months[d.getMonth()] + ' de ' + d.getFullYear());
 
   // Código único
   var code = 'ODA-ADS-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substring(2,6).toUpperCase();
