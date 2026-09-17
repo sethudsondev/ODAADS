@@ -2350,3 +2350,11 @@
   }
 
   body.light-mode .side-nav { background: rgba(255,255,255,0.9); }
+
+  /* Icones de navegacao (substituem emoji, que renderiza inconsistente
+     entre sistemas/fontes - o print que o usuario mandou mostrava so um
+     glifo generico no lugar do emoji). */
+  .ic { width: 1.1em; height: 1.1em; flex-shrink: 0; vertical-align: -0.15em; }
+  .side-nav-links a, .side-nav-help { display: flex !important; align-items: center; gap: 0.65rem; }
+  .side-nav-links .ic, .side-nav-help .ic { width: 16px; height: 16px; }
+  .mobile-menu a .ic, #btn-install-app-mobile .ic { width: 18px; height: 18px; }
