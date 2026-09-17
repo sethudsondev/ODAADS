@@ -922,15 +922,32 @@ function drawCertCanvas(nome, lang, score, total, dateStr, code) {
     ctx.fillStyle='#8faabf'; ctx.font='11px Arial,sans-serif'; ctx.fillText(subtitleTxt, W/2, metaY);
   }
 
+  // Sem isso, se a imagem do logo travar (rede lenta, cache antigo do
+  // service worker etc.) o certificado nunca desenha nada - ficava so uma
+  // tela branca, sem erro nenhum no console.
   var logoImg = new Image();
+  var _certFinished = false;
+  var _certTimeout = setTimeout(function () {
+    if (_certFinished) return;
+    _certFinished = true;
+    drawRest();
+  }, 1200);
   logoImg.onload = function () {
+    if (_certFinished) return;
+    _certFinished = true;
+    clearTimeout(_certTimeout);
     ctx.save(); ctx.beginPath(); ctx.arc(100,148,52,0,Math.PI*2);
     ctx.fillStyle='#fff'; ctx.fill();
     ctx.strokeStyle='#dde5f0'; ctx.lineWidth=1.5; ctx.stroke();
     ctx.clip(); ctx.drawImage(logoImg,52,100,96,96); ctx.restore();
     drawRest();
   };
-  logoImg.onerror = drawRest;
+  logoImg.onerror = function () {
+    if (_certFinished) return;
+    _certFinished = true;
+    clearTimeout(_certTimeout);
+    drawRest();
+  };
   logoImg.src = CERT_LOGO;
 }
 
@@ -943,6 +960,27 @@ function downloadCert() {
   a.download = 'certificado-oda-ads-' + nome + '.png';
   a.click();
   if (typeof showToast === 'function') showToast('✓ Certificado baixado!', 2000);
+}
+
+async function shareCert() {
+  var canvas = document.getElementById('cert-canvas');
+  var ni = document.getElementById('cert-name-input');
+  var nome = ni ? ni.value.trim() : 'Certificado';
+  if (navigator.share) {
+    try {
+      var blob = await new Promise(function (r) { canvas.toBlob(r, 'image/png'); });
+      var file = new File([blob], 'certificado-oda-ads.png', { type: 'image/png' });
+      await navigator.share({ title: 'Certificado ODA·ADS', text: nome + ' concluiu o ODA·ADS!', files: [file] });
+    } catch (e) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(nome + ' concluiu o ODA·ADS!').then(function () {
+          if (typeof showToast === 'function') showToast('✓ Copiado!', 2000);
+        });
+      }
+    }
+  } else {
+    downloadCert();
+  }
 }
 
 function copiarCodigo() {
